@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Gigas Cell Atlas: 186,414 Pacific oyster cells from 8 public single-cell studies, reprocessed on one genome (xbMagGiga1.1).">
+<meta property="og:title" content="Gigas Cell Atlas">
+<meta property="og:description" content="Gigas Cell Atlas: 186,414 Pacific oyster cells from 8 public single-cell studies, reprocessed on one genome (xbMagGiga1.1).">
+<meta name="theme-color" content="#040606">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Gigas Cell Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* Shared by the project page and the family browser (inlined by code/web_v4_build.py).
+   Single dark theme: near-black ground, glowing cell maps, nacre (mother-of-pearl) gradient as the one accent. */
+:root{
+  color-scheme:dark;
+  --bg:#040606; --surface:#0A0F11; --surface2:#0E1518; --raise:#131C20;
+  --ink:#E9EFF0; --muted:#8C9CA2; --dim:#5C6B71; --line:#162024; --line2:#233138;
+  --accent:#5EEAD4; --accent-ink:#03211C; --accent-soft:rgba(94,234,212,.09);
+  --warn:#F2B562; --ok:#7BE0A4; --glass:rgba(4,6,6,.76); --dot-off:#1B2529; --dot-unk:#3A474C;
+  --nacre:linear-gradient(100deg,#A7F3E4 0%,#BCC8FF 42%,#F4C9E6 76%,#FFE3BF 100%);
+  --f-display:"Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --f-body:"Geist", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono:"Geist Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --a-development:#F5B03A; --a-hemocyte:#FF7A45; --a-priming:#E58BC9; --a-gonad:#34D399; --a-ganglia:#4EA8FF; --a-mantle:#7DD3FC;
+  --l-hemocyte:#FF7A45; --l-neural:#4EA8FF; --l-epithelial:#7DD3FC; --l-connective:#F5B03A; --l-germline:#34D399; --l-gonadsom:#A3E635; --l-embryonic:#E58BC9; --l-unresolved:#5C6B71;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.fx{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(1000px 560px at 12% -10%,rgba(94,234,212,.09),transparent 60%),radial-gradient(900px 700px at 110% 120%,rgba(244,201,230,.06),transparent 60%)}
+.wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--accent)} a:focus-visible,button:focus-visible,input:focus-visible,canvas:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+::selection{background:rgba(94,234,212,.28)}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--glass);-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--ink);text-decoration:none}
+.brand svg{flex:none}
+.brand b{font:600 16px/1.1 var(--f-body);letter-spacing:-.1px}
+.brand small{display:block;font:500 10.5px/1.3 var(--f-mono);color:var(--dim);letter-spacing:.9px;text-transform:uppercase;margin-top:2px}
+nav{display:flex;flex-wrap:wrap;align-items:center;gap:2px;margin-left:auto}
+nav a{padding:6px 11px;border-radius:999px;text-decoration:none;color:var(--muted);font-size:14px;font-weight:500;transition:color .15s,background .15s}
+nav a:hover{color:var(--ink)}
+nav a[aria-current="page"]{color:var(--ink);background:var(--raise);box-shadow:inset 0 0 0 1px var(--line2)}
+nav a.cta{margin-left:8px;color:var(--accent-ink);background:var(--accent);font-weight:600}
+nav a.cta:hover{color:var(--accent-ink);background:#86F2E2}
+
+h1{font:400 clamp(30px,4.6vw,48px)/1.06 var(--f-display);margin:0;letter-spacing:-.4px;text-wrap:balance}
+h2{font:400 clamp(28px,3.4vw,40px)/1.08 var(--f-display);margin:0;letter-spacing:-.3px;text-wrap:balance}
+h3{font:600 17px/1.3 var(--f-body);margin:0;letter-spacing:-.15px}
+.nacre{background:var(--nacre);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{font:500 11.5px/1.3 var(--f-mono);letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:1px;background:currentColor}
+.label{font:500 10.5px/1.3 var(--f-mono);letter-spacing:1px;text-transform:uppercase;color:var(--dim)}
+.muted{color:var(--muted)} .mono{font-family:var(--f-mono);font-size:.92em}
+.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.note{font-size:14px;color:var(--muted);margin:0;max-width:72ch}
+.sw{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.btn{display:inline-flex;align-items:center;gap:8px;font:500 14px var(--f-body);border:1px solid var(--line2);background:var(--raise);color:var(--ink);border-radius:10px;padding:10px 16px;cursor:pointer;text-decoration:none;transition:border-color .15s,background .15s}
+.btn:hover{border-color:var(--dim)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+.btn.primary:hover{background:#86F2E2}
+button{font:500 13px var(--f-body);border:1px solid var(--line2);background:var(--raise);color:var(--ink);border-radius:8px;padding:6px 12px;cursor:pointer}
+button:hover{border-color:var(--dim)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;min-width:0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.9px;color:var(--dim)}
+tbody tr:hover td{background:rgba(255,255,255,.015)}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:11.5px;background:var(--raise);border:1px solid var(--line2);color:var(--muted);white-space:nowrap}
+.pill.warn{color:var(--warn)} .pill.ok{color:var(--ok)}
+pre.code{margin:0;padding:14px 16px;border-radius:12px;background:#070B0C;border:1px solid var(--line2);font:12.5px/1.6 var(--f-mono);color:var(--ink);overflow-x:auto}
+pre.code .c{color:var(--dim)}
+
+footer{position:relative;z-index:1;margin-top:70px;border-top:1px solid var(--line)}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));gap:24px;padding-block:30px 40px;font-size:13px;color:var(--muted)}
+footer b{display:block;color:var(--ink);font-weight:500;margin-bottom:6px}
+footer p{margin:0}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:3px}
+@media (max-width:760px){ nav{margin-left:0} footer .wrap{grid-template-columns:1fr} }
+
+section{display:grid;gap:26px;padding-block:56px 0;scroll-margin-top:70px}
+.shead{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:14px 40px;align-items:end}
+.shead > div{display:grid;gap:10px;min-width:0}
+
+/* hero: text left, plate of six maps right */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:44px;align-items:center;padding-block:52px 10px}
+.hero-text{display:grid;gap:22px;min-width:0;align-content:center}
+.status{display:inline-flex;align-items:center;gap:8px;width:max-content;max-width:100%;font:500 11.5px var(--f-mono);letter-spacing:.8px;text-transform:uppercase;color:var(--warn);padding:5px 11px;border-radius:999px;border:1px solid rgba(242,181,98,.3);background:rgba(242,181,98,.06)}
+.status::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+.hero h1{font-size:clamp(48px,7.4vw,96px);line-height:.92;letter-spacing:-1.2px}
+.hero h1 em{font-style:italic}
+.ptitle{margin:0;font:400 clamp(18px,1.9vw,22px)/1.35 var(--f-display);color:var(--ink);max-width:40ch;text-wrap:balance}
+.lead{margin:0;max-width:54ch;font-size:15.5px;color:var(--muted)}
+.lead b{color:var(--ink);font-weight:500}
+.acts{display:flex;flex-wrap:wrap;gap:10px}
+.plate{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;min-width:0}
+.tile{position:relative;display:block;border-radius:14px;background:radial-gradient(circle at 50% 45%,#0B1417 0%,var(--surface) 72%);border:1px solid var(--line);overflow:hidden;text-decoration:none;color:var(--ink);transition:border-color .3s,box-shadow .3s}
+.tile canvas{display:block;width:100%;aspect-ratio:1;max-width:100%}
+.tile::after{content:"";position:absolute;inset:auto 0 0 0;height:34%;background:linear-gradient(transparent,rgba(4,6,6,.88));pointer-events:none}
+.tile span{position:absolute;z-index:1;left:10px;bottom:8px;right:10px;font:500 10.5px var(--f-mono);letter-spacing:.7px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:6px}
+.tile.on{border-color:var(--tc);box-shadow:0 0 0 1px var(--tc),0 0 28px -6px var(--tc)}
+.tile.on span{color:var(--ink)}
+.platecap{grid-column:1 / -1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 14px;font-size:13px;color:var(--muted);padding:4px 2px 0}
+.platecap b{font:400 22px/1.1 var(--f-display);color:var(--ink)}
+
+/* number ribbon */
+.ribbon{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin-top:46px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--surface2),var(--surface));overflow:hidden}
+.ribbon div{padding:18px 16px;display:grid;gap:4px;border-left:1px solid var(--line)} .ribbon div:first-child{border-left:0}
+.ribbon b{font:400 clamp(26px,3vw,38px)/1 var(--f-display);font-variant-numeric:tabular-nums}
+.ribbon span{font:500 10.5px/1.35 var(--f-mono);letter-spacing:.9px;text-transform:uppercase;color:var(--muted)}
+
+/* explore: one wide card + two stacked */
+.explore{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);grid-template-rows:auto auto;gap:14px}
+.ecard{position:relative;display:grid;gap:12px;align-content:start;padding:22px;border-radius:18px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--ink);transition:border-color .2s,transform .2s;min-width:0}
+.ecard:hover{border-color:rgba(94,234,212,.45);transform:translateY(-2px)}
+.ecard.big{grid-row:span 2}
+.ecard i{font:500 11px var(--f-mono);font-style:normal;color:var(--accent);letter-spacing:.8px;text-transform:uppercase}
+.ecard b{font:400 30px/1.05 var(--f-display)}
+.ecard p{margin:0;font-size:14px;color:var(--muted)}
+.ecard .arrow{position:absolute;top:20px;right:22px;font:500 18px var(--f-mono);color:var(--dim);transition:color .2s,transform .2s}
+.ecard:hover .arrow{color:var(--accent);transform:translateX(3px)}
+.mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:6px}
+.mini figure{margin:0;display:grid;gap:4px}
+.mini canvas{width:100%;aspect-ratio:1;max-width:100%;border-radius:10px;background:#070B0C}
+.mini figcaption{font:500 10px var(--f-mono);letter-spacing:.6px;text-transform:uppercase;color:var(--dim)}
+.linleg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;color:var(--muted)}
+.linleg span{display:flex;align-items:center;gap:6px}
+.featrow{display:flex;flex-wrap:wrap;gap:6px}
+.featrow span{font:500 11.5px var(--f-mono);padding:3px 9px;border-radius:999px;background:var(--raise);border:1px solid var(--line2);color:var(--muted)}
+.fdots{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:5px;margin-top:4px;max-width:340px}
+.fdots i{aspect-ratio:1;border-radius:50%;display:block}
+
+/* resource: steps + findings */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;counter-reset:st;border-top:1px solid var(--line2)}
+.step{position:relative;padding:20px 18px 6px 0;display:grid;gap:6px;align-content:start;min-width:0}
+.step::before{counter-increment:st;content:"0" counter(st);font:500 11px var(--f-mono);color:var(--accent);letter-spacing:.8px}
+.step::after{content:"";position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.step p{margin:0;font-size:13.5px;color:var(--muted)}
+.finds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.find{display:grid;gap:8px;align-content:start;padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--surface);position:relative;overflow:hidden}
+.find::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:var(--nacre);opacity:.7}
+.find b{font:400 40px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.find p{margin:0;font-size:14px;color:var(--muted)}
+
+/* tool */
+.tool{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;align-items:start}
+.models{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.models div{padding:10px 12px;border-radius:10px;background:var(--surface2);border:1px solid var(--line);display:grid;gap:2px}
+.models b{font:500 13px var(--f-mono)} .models span{font-size:12px;color:var(--muted)}
+.codehead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+
+/* data + cite */
+.files{display:grid;gap:0;border-top:1px solid var(--line)}
+.file{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.6fr) auto;gap:6px 18px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--line)}
+.file b{font-weight:500} .file span{font-size:13.5px;color:var(--muted)}
+.cite{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.cite pre.code{white-space:pre-wrap;word-break:break-word}
+
+@media (max-width:980px){ .hero{grid-template-columns:1fr} .ribbon{grid-template-columns:repeat(3,minmax(0,1fr))} .ribbon div:nth-child(4){border-left:0} .ribbon div:nth-child(n+4){border-top:1px solid var(--line)} }
+@media (max-width:860px){ .shead,.tool,.cite{grid-template-columns:1fr} .explore{grid-template-columns:1fr} .ecard.big{grid-row:auto} .steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:14px} .finds{grid-template-columns:1fr} }
+@media (max-width:520px){ .ribbon{grid-template-columns:repeat(2,minmax(0,1fr))} .ribbon div:nth-child(n){border-left:1px solid var(--line);border-top:1px solid var(--line)} .ribbon div:nth-child(odd){border-left:0} .ribbon div:nth-child(-n+2){border-top:0}
+  .mini{grid-template-columns:repeat(3,minmax(0,1fr))} .file{grid-template-columns:1fr} .steps{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){ .ecard,.tile{transition:none} }
+</style>
+</head>
+<body>
+<div class="fx" aria-hidden="true"></div>
+<header><div class="wrap">
+  <a class="brand" href="#top" aria-label="Gigas Cell Atlas, top of page">
+    <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="ng" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A7F3E4"/><stop offset=".5" stop-color="#BCC8FF"/><stop offset="1" stop-color="#F4C9E6"/></linearGradient></defs>
+      <path d="M16 3c7 2 12 8 12 15 0 6-5 11-12 11S4 24 4 18C4 11 9 5 16 3z" fill="none" stroke="url(#ng)" stroke-width="1.6"/>
+      <path d="M16 8c4 1.6 7 5.4 7 10 0 3.6-3 6.5-7 6.5S9 21.6 9 18c0-4.6 3-8.4 7-10z" fill="none" stroke="url(#ng)" stroke-width="1.2" opacity=".7"/>
+      <circle cx="16" cy="18" r="2.6" fill="url(#ng)"/></svg>
+    <span><b>Gigas Cell Atlas</b><small>Crassostrea gigas</small></span></a>
+  <nav><a href="#explore">Explore</a><a href="#resource">Resource</a><a href="#studies">Studies</a><a href="#tool">R and Python</a><a href="#data">Data</a><a href="#cite">Cite</a><a href="https://github.com/dndn0254/gigas-atlas">GitHub</a><a class="cta" href="explorer/">Open explorer</a></nav>
+</div></header>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <div class="hero-text">
+      <span class="status">Preview, manuscript in preparation</span>
+      <h1>Gigas <em class="nacre">Cell Atlas</em></h1>
+      <p class="ptitle">A uniformly reprocessed single-cell atlas of the Pacific oyster links cell types across tissues, development and bulk transcriptomes</p>
+      <p class="lead" id="lead"></p>
+      <div class="acts"><a class="btn primary" href="explorer/">Open the explorer</a><a class="btn" href="families.html">Browse cell-type families</a></div>
+    </div>
+    <div class="plate" id="plate" aria-label="Cell maps of the six atlases"></div>
+  </div>
+  <div class="ribbon" id="ribbon"></div>
+
+  <section id="explore">
+    <div class="shead"><div><div class="eyebrow">Explore</div><h2>Three doors into the data</h2></div>
+      <p class="note">Everything runs in your browser. Nothing you type is sent anywhere.</p></div>
+    <div class="explore">
+      <a class="ecard big" href="explorer/"><span class="arrow">&rarr;</span><i>Atlas explorer</i><b>Look up a gene or a cell type</b>
+        <p id="xp"></p>
+        <div class="featrow"><span>gene pages</span><span>cell-type pages</span><span>similar genes</span><span>copy values</span></div>
+        <div class="mini" id="mini"></div>
+        <p style="font-size:12.5px">Coloured by lineage. Orange is the hemocyte lineage: blood cell types turn up in every adult tissue.</p>
+        <div class="linleg" id="linleg"></div></a>
+      <a class="ecard" href="families.html"><span class="arrow">&rarr;</span><i>Family browser</i><b>The same cell type, across datasets</b>
+        <p id="fp"></p><div class="fdots" id="fdots" aria-hidden="true"></div></a>
+      <a class="ecard" href="explorer/#list"><span class="arrow">&rarr;</span><i>Gene list and ID converter</i><b>Read your bulk RNA-seq</b>
+        <p>Paste differentially expressed genes and see which atlas cell types they point to. Old Roslin v1 IDs convert to current IDs on the next tab.</p></a>
+    </div>
+  </section>
+
+  <section id="resource">
+    <div class="shead"><div><div class="eyebrow">The resource</div><h2>Eight studies, one genome, one naming scheme</h2></div>
+      <p class="note">Eight oyster single-cell studies were published by different labs, with different protocols, on a superseded genome, so their cell types could not be compared. We reprocessed all public raw reads with one pipeline. Tissue, lab and protocol are fully confounded, so we keep six atlases and link them by comparing cell-type names instead of merging cells.</p></div>
+    <div class="steps">
+      <div class="step"><h3>Raw reads</h3><p>27 runs, 9 BioProjects, 20 libraries (14 whole cell, 6 nuclei) from 4 countries.</p></div>
+      <div class="step"><h3>One genome</h3><p>All reads mapped to xbMagGiga1.1 with the RefSeq annotation RS_2024_06.</p></div>
+      <div class="step"><h3>Six atlases</h3><p>Shared QC, then Seurat 5 (R): LogNormalize, vst genes, PCA, SNN graph, Louvain clusters, RPCA within tissue. Names graded by evidence: authors' label, marker support, confidence.</p></div>
+      <div class="step"><h3>Linked by name</h3><p>Cell types compared across datasets with the MetaNeighbor R package (AUROC), kept only if reciprocal top hits and stable in 6 of 9 re-runs.</p></div>
+    </div>
+    <div class="finds">
+      <div class="find"><span class="label">Reproduced</span><b>99.9%</b><p>of the achievable agreement with the authors' gastrula labels; 98.9% for the trochophore larva.</p></div>
+      <div class="find"><span class="label">Linked</span><b id="nmatch">90</b><p id="fmatch"></p></div>
+      <div class="find"><span class="label">Hemocytes in every tissue</span><b>7</b><p>blood hemocyte types reappear in gonad, ganglia and mantle, including ganglion cells first described as phagocytic glia (AUROC 0.999).</p></div>
+    </div>
+    <p class="note">Preliminary results from the manuscript in preparation; numbers may change before publication.</p>
+  </section>
+
+  <section id="studies">
+    <div class="shead"><div><div class="eyebrow">Source studies</div><h2>What the atlas is built from</h2></div>
+      <p class="note">Cell counts are after our QC. Raw reads are not redistributed; use the original accessions.</p></div>
+    <div class="panel tbl"><table><thead><tr><th>Dataset</th><th>Atlas</th><th>Study</th><th>Accession</th><th class="num">Cells</th><th class="num">Cell types</th></tr></thead><tbody id="stb"></tbody></table></div>
+  </section>
+
+  <section id="tool">
+    <div class="shead"><div><div class="eyebrow">R (Seurat) and Python</div><h2>gigasatlas</h2></div>
+      <p class="note">Names the cells of new oyster single-cell data with these references, directly on a Seurat object in R or on AnnData in Python (same models, same answers), scores clusters and gene lists, and converts old gene IDs. Accuracy on cells from held-out libraries, studies or labs: 73 to 92%.</p></div>
+    <div class="tool">
+      <div style="display:grid;gap:12px;min-width:0"><span class="label">Bundled models</span>
+        <div class="models"><div><b>development</b><span>73 types, embryo and larva</span></div><div><b>hemocyte</b><span>15 types, blood</span></div><div><b>gonad</b><span>28 types, nuclei</span></div>
+          <div><b>ganglia</b><span>49 types, nuclei</span></div><div><b>mantle</b><span>21 types</span></div><div><b>lineage</b><span>7 broad lineages</span></div></div>
+        <p class="note">R: Seurat 5, nothing to install. Python: 3.9 or newer; numpy, pandas, scipy, anndata. MIT licence. Full instructions: <a href="https://github.com/dndn0254/gigasatlas#readme">github.com/dndn0254/gigasatlas</a>.</p></div>
+      <div style="min-width:0"><div class="codehead"><span class="label">Quick start</span><button id="ccode">Copy</button></div>
+<pre class="code" id="code"><span class="c"># R, on a Seurat object (no install)</span>
+source("https://raw.githubusercontent.com/dndn0254/gigasatlas/main/R/gigasatlas.R")
+seu <- gigasatlas_annotate(seu, model = "hemocyte", group.by = "seurat_clusters")
+head(seu[[c("gigas_label", "gigas_prob", "gigas_status")]])
+z <- gigasatlas_score_clusters(seu)      <span class="c"># tissue not in the atlas</span>
+seu <- gigasatlas_convert_ids(seu)       <span class="c"># only if genes use Roslin v1 IDs</span>
+
+<span class="c"># Python, on AnnData or a 10x folder</span>
+pip install git+https://github.com/dndn0254/gigasatlas.git
+gigasatlas annotate sample.h5ad --model hemocyte --table names.tsv
+gigasatlas enrich my_de_genes.txt</pre></div>
+    </div>
+  </section>
+
+  <section id="data">
+    <div class="shead"><div><div class="eyebrow">Data</div><h2>Files</h2></div>
+      <p class="note">Annotation tables are in the <a href="https://github.com/dndn0254/gigas-atlas/tree/main/annotations">annotations folder</a> of this site's repository now. Count matrices go to Zenodo with a DOI when the paper is published.</p></div>
+    <div class="files">
+      <div class="file"><b><a href="annotations/cells.tsv.gz">Cell annotation (.tsv.gz)</a></b><span>every one of the 186,414 cells: atlas, library, cell-type name, lineage, confidence, Seurat cluster and map position</span><span class="pill ok">available</span></div>
+      <div class="file"><b><a href="annotations/cell_types.tsv">Cell types (.tsv)</a></b><span>name, authors' name, lineage, confidence, cell count, family of every cell type</span><span class="pill ok">available</span></div>
+      <div class="file"><b><a href="annotations/family_matches.tsv">Families and matches (.tsv)</a></b><span>90 robust cross-dataset matches with AUROC (MetaNeighbor R), and 22 families</span><span class="pill ok">available</span></div>
+      <div class="file"><b><a href="annotations/marker_db_v1.xlsx">Marker database (.xlsx)</a></b><span>published markers translated to current IDs; top genes of every cell type</span><span class="pill ok">available</span></div>
+      <div class="file"><b>ID crosswalk (.tsv)</b><span>Roslin v1 to xbMagGiga1.1, 18,731 one-to-one genes; ships inside gigasatlas</span><span class="pill ok">in package</span></div>
+      <div class="file"><b>Six atlas files (Seurat .rds, .h5ad)</b><span>raw counts, cell names, confidence, map coordinates</span><span class="pill warn">at publication</span></div>
+    </div>
+  </section>
+
+  <section id="cite">
+    <div class="shead"><div><div class="eyebrow">Cite</div><h2>How to cite</h2></div>
+      <p class="note">The manuscript is in preparation. Until a preprint exists, cite this page with its version, and always cite the source studies.</p></div>
+    <div class="cite">
+      <div class="panel" style="display:grid;gap:10px"><div class="codehead"><span class="label">This resource</span><button id="ccite">Copy</button></div>
+        <pre class="code" id="citetxt"></pre></div>
+      <div class="panel" style="display:grid;gap:10px;align-content:start"><span class="label">Version</span><p class="note" id="ver"></p>
+        <span class="label" style="margin-top:6px">Licence</span><p class="note">Data CC BY 4.0, code MIT (planned with the release).</p></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div><b>Gigas Cell Atlas</b><p>Pacific oyster single-cell reference, preview release. Manuscript in preparation; numbers may change before publication.</p></div>
+  <div><b>Explore</b><ul><li><a href="explorer/">Atlas explorer</a></li><li><a href="families.html">Cell-type families</a></li><li><a href="explorer/#list">Gene list test</a></li><li><a href="explorer/#convert">ID converter</a></li><li><a href="https://github.com/dndn0254/gigas-atlas">GitHub: site and annotations</a></li><li><a href="https://github.com/dndn0254/gigasatlas">GitHub: gigasatlas</a></li></ul></div>
+  <div><b>Built from</b><p>8 public studies: Gavery 2025, Piovani 2023, de La Forest Divonne 2025, Wang 2024 and 2025, Yang 2026, Bai 2026, and PRJNA1236035.</p></div>
+</div></footer>
+
+<script src="atlas_lite.js"></script>
+<script>
+(function(){
+// Shared by the project page and the family browser (inlined by code/web_v4_build.py). Needs window.ATLAS from atlas_lite.js.
+const A = window.ATLAS;
+const dec = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = n => n.toLocaleString("en-US");
+const RM = matchMedia("(prefers-reduced-motion: reduce)");
+const DSN = {early_embryo:"Cleavage / blastula", gastrula:"Gastrula", trochophore:"Trochophore larva", hemocyte:"Hemocytes", priming:"Hemocyte priming", gonad:"Gonad", ganglia:"Ganglia", mantle:"Mantle"};
+const DS2B = {early_embryo:"development", gastrula:"development", trochophore:"development", hemocyte:"hemocyte", priming:"priming", gonad:"gonad", ganglia:"ganglia", mantle:"mantle"};
+const BN = {development:"Development", hemocyte:"Hemocytes", priming:"Hemocyte priming", gonad:"Gonad", ganglia:"Ganglia", mantle:"Mantle"};
+const BSUB = {development:"embryo + larva", hemocyte:"blood, whole cells", priming:"blood, primed", gonad:"nuclei", ganglia:"nuclei", mantle:"whole cells"};
+const HB = Object.keys(BN), DSORD = Object.keys(DSN);
+const LINK = {"hemocyte":"--l-hemocyte", "neural":"--l-neural", "epithelial/secretory":"--l-epithelial", "connective/muscle":"--l-connective", "germline":"--l-germline", "gonad somatic":"--l-gonadsom", "embryonic/other":"--l-embryonic", "unresolved":"--l-unresolved"};
+const LINNAME = {"hemocyte":"Hemocyte", "neural":"Neural", "epithelial/secretory":"Epithelial, secretory", "connective/muscle":"Connective, muscle", "germline":"Germline", "gonad somatic":"Gonad somatic", "embryonic/other":"Embryonic, other", "unresolved":"Unresolved"};
+const lincol = lin => css(LINK[lin] || "--l-unresolved");
+A.labels.forEach(L => { if (/^nan$/i.test(L.name)) L.name = "Unnamed by authors"; });
+const UM = {}; for (const b in A.umap) UM[b] = { xy: new Uint16Array(dec(A.umap[b].xy).buffer), lab: dec(A.umap[b].lab), n: A.umap[b].n };
+const PAL = ["#4EA8FF","#FF9F43","#34D399","#FF6B6B","#A78BFA","#C08457","#F472B6","#94A3B8","#D9E35B","#22D3EE","#93C5FD","#FDBA74","#86EFAC","#FCA5A5","#C4B5FD","#E7B98F","#F9A8D4","#E5E58A","#99F6E4","#6366F1","#84CC16","#EAB308","#EF4444","#D946EF","#3B82F6","#F97316"];
+const LABCOL = {}; { const cnt = {}, unk = css("--dot-unk"); A.labels.forEach((L, l) => { const k = DS2B[L.ds]; cnt[k] = cnt[k] || 0; LABCOL[l] = /nresolved|^Unk|Unnamed/.test(L.name) ? unk : PAL[cnt[k]++ % PAL.length]; }); }
+const bcount = b => { const ls = A.labels.filter(L => DS2B[L.ds] === b); return [ls.reduce((s, L) => s + L.n, 0), ls.length]; };
+
+// Two passes: additive halo, then sharp core, so dense clusters glow.
+// mode "type": colour by cell type; "lin": by lineage; "set": only labels in arg (a Map label -> colour) lit.
+function drawMap(c, b, mode, arg){
+  const dpr = Math.min(2, window.devicePixelRatio || 1), Wc = c.clientWidth || 200; c.width = c.height = Math.round(Wc * dpr);
+  const ctx = c.getContext("2d"), W = c.width, H = c.height, u = UM[b], pad = W * 0.06, s = (W - 2 * pad) / 1000;
+  ctx.clearRect(0, 0, W, H);
+  const r = Math.max(0.7 * dpr, W / 340), off = css("--dot-off"), idx = [...Array(u.n).keys()];
+  let colf, lit;
+  if (mode === "set") { idx.sort((a, bb) => arg.has(u.lab[a]) - arg.has(u.lab[bb])); lit = i => arg.has(u.lab[i]); colf = i => lit(i) ? arg.get(u.lab[i]) : off; }
+  else if (mode === "lin") { const lc = {}; lit = () => true; colf = i => { const l = u.lab[i]; return lc[l] || (lc[l] = lincol(A.labels[l].lin)); }; }
+  else { lit = () => true; colf = i => LABCOL[u.lab[i]]; }
+  const X = i => pad + u.xy[2 * i] * s, Y = i => H - pad - u.xy[2 * i + 1] * s;
+  ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = mode === "set" ? 0.09 : 0.05;
+  for (const i of idx) { if (!lit(i)) continue; ctx.fillStyle = colf(i); ctx.beginPath(); ctx.arc(X(i), Y(i), r * 3.4, 0, 6.283); ctx.fill(); }
+  ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 0.92;
+  for (const i of idx) { ctx.fillStyle = colf(i); ctx.beginPath(); ctx.arc(X(i), Y(i), r, 0, 6.283); ctx.fill(); }
+  ctx.globalAlpha = 1;
+}
+function copyText(btn, txt){ const o = btn.textContent, done = ok => { btn.textContent = ok ? "Copied" : "Select and copy"; setTimeout(() => btn.textContent = o, 1400); };
+  try { navigator.clipboard.writeText(txt).then(() => done(true), () => done(false)); } catch (e) { done(false); } }
+function onResize(fn){ let t, w = window.innerWidth; window.addEventListener("resize", () => { if (Math.abs(window.innerWidth - w) < 40) return; w = window.innerWidth; clearTimeout(t); t = setTimeout(fn, 250); }); }
+
+const STUDY = {early_embryo:["Gavery et al. 2025, BMC Genomics","PRJNA909306"], gastrula:["Gavery et al. 2025, BMC Genomics","PRJNA909306"], trochophore:["Piovani et al. 2023, Science Advances","PRJNA967338"],
+  hemocyte:["de La Forest Divonne et al. 2025, eLife","PRJEB74031"], priming:["No paper (Dalian Ocean University)","PRJNA1236035"],
+  gonad:["Wang et al. 2024, iScience; Wang et al. 2025, Communications Biology","PRJNA983861, PRJNA1244049, PRJNA1347576"], ganglia:["Yang et al. 2026, BMC Biology","PRJNA1457765"], mantle:["Bai et al. 2026, bioRxiv","PRJNA1338802"]};
+const nF = A.families.length, nF3 = A.families.filter(f => new Set(f.labels.map(l => A.labels[l].ds)).size >= 3).length;
+document.getElementById("lead").innerHTML = `<b>${fmt(A.n_cells_total)} cells</b> from 8 public single-cell studies of embryo, larva, blood, gonad, ganglia and mantle, rebuilt from raw reads on the current genome and named the same way.`;
+document.getElementById("ribbon").innerHTML = [["8", "public studies"], [fmt(A.n_cells_total), "cells"], [A.labels.length, "cell types"], ["6", "tissue and stage atlases"], [A.edges.length, "cross-dataset matches"], [nF, "cell-type families"]].map(([v, k]) => `<div><b>${v}</b><span>${k}</span></div>`).join("");
+document.getElementById("nmatch").textContent = A.edges.length;
+document.getElementById("fmatch").textContent = `robust cell-type matches between datasets form ${nF} families; ${nF3} of them span three or more datasets.`;
+document.getElementById("xp").textContent = `Type a gene ID, an old Roslin ID or a protein name and see its level in all ${A.labels.length} cell types, with a one-line verdict and where it sits on each map.`;
+document.getElementById("fp").textContent = `${nF} families of matching cell types, from gastrula mesoderm to adult hemocytes. See which datasets share each one and how strongly.`;
+document.getElementById("ver").textContent = `${A.version}. Genome ${A.genome}.`;
+const cite = `Gigas Cell Atlas (${A.version}). A uniformly reprocessed single-cell atlas of the Pacific oyster. Manuscript in preparation. ${location.href.split("#")[0]}`;
+document.getElementById("citetxt").textContent = cite;
+document.getElementById("ccite").onclick = e => copyText(e.target, cite);
+document.getElementById("ccode").onclick = e => copyText(e.target, document.getElementById("code").textContent);
+
+// studies table, counts from the atlas labels
+document.getElementById("stb").innerHTML = DSORD.map(d => { const ls = A.labels.filter(L => L.ds === d), n = ls.reduce((s, L) => s + L.n, 0), b = DS2B[d];
+  return `<tr><td>${DSN[d]}</td><td><span class="sw" style="background:var(--a-${b});box-shadow:0 0 8px var(--a-${b});margin-right:8px"></span>${BN[b]}</td><td>${esc(STUDY[d][0])}</td><td class="mono">${STUDY[d][1]}</td><td class="num">${fmt(n)}</td><td class="num">${ls.length}</td></tr>`; }).join("");
+
+// hero plate: six maps, one lit at a time
+const plate = document.getElementById("plate");
+plate.innerHTML = HB.map((b, i) => `<a class="tile" href="explorer/#types.${b}" data-i="${i}" style="--tc:var(--a-${b})"><canvas data-b="${b}" aria-label="${BN[b]} cell map"></canvas><span><i class="sw" style="background:var(--a-${b})"></i>${BN[b]}</span></a>`).join("") +
+  `<div class="platecap"><b id="pcn"></b><span id="pcs"></span></div>`;
+let on = 0, timer = null;
+function light(i){ on = i; const b = HB[i], [n, k] = bcount(b); plate.querySelectorAll(".tile").forEach((t, j) => t.classList.toggle("on", j === i));
+  document.getElementById("pcn").textContent = BN[b]; document.getElementById("pcs").textContent = `${fmt(n)} cells, ${k} cell types, ${BSUB[b]}`; }
+plate.querySelectorAll(".tile").forEach(t => { t.onmouseenter = () => { light(+t.dataset.i); clearInterval(timer); }; t.onmouseleave = start; t.onfocus = () => light(+t.dataset.i); });
+function start(){ clearInterval(timer); if (RM.matches) return; timer = setInterval(() => { if (!document.hidden) light((on + 1) % HB.length); }, 3200); }
+const mini = document.getElementById("mini");
+mini.innerHTML = HB.map(b => `<figure><canvas data-b="${b}" aria-hidden="true"></canvas><figcaption>${BN[b]}</figcaption></figure>`).join("");
+document.getElementById("linleg").innerHTML = Object.keys(LINK).map(l => `<span><i class="sw" style="background:${lincol(l)}"></i>${LINNAME[l]}</span>`).join("");
+document.getElementById("fdots").innerHTML = A.families.map(f => `<i style="background:${lincol(f.lineage)};box-shadow:0 0 8px ${lincol(f.lineage)};opacity:${(0.45 + 0.55 * Math.min(1, new Set(f.labels.map(l => A.labels[l].ds)).size / 7)).toFixed(2)}"></i>`).join("");
+function drawAll(){ plate.querySelectorAll("canvas").forEach(c => drawMap(c, c.dataset.b, "type")); mini.querySelectorAll("canvas").forEach(c => drawMap(c, c.dataset.b, "lin")); }
+drawAll(); light(0); start(); onResize(drawAll);
+})();
+</script>
+</body>
+</html>

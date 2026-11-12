@@ -1,0 +1,214 @@
+atlas	dataset	cell_type	short_name	authors_name	lineage	confidence	n_cells	family	in_web
+development	early_embryo	CB-1	CB-1	CB-1	embryonic/other	author	1960		True
+development	early_embryo	CB-2	CB-2	CB-2	embryonic/other	author	1855		True
+development	early_embryo	CB-3	CB-3	CB-3	embryonic/other	author	1431		True
+development	early_embryo	CB-4	CB-4	CB-4	embryonic/other	author	1016		True
+development	early_embryo	CB-5	CB-5	CB-5	embryonic/other	author	567		True
+development	early_embryo	CB-7	CB-7	CB-7	embryonic/other	author	516		True
+development	early_embryo	CB-9	CB-9	CB-9	embryonic/other	author	246		True
+development	early_embryo	CB-6	CB-6	CB-6	embryonic/other	author	172		True
+development	early_embryo	CB-8	CB-8	CB-8	embryonic/other	author	117		True
+development	early_embryo	CB-10	CB-10	CB-10	embryonic/other	author	84		True
+development	gastrula	Un-M	Un-M	Un-M	embryonic/other	author	2012		True
+development	gastrula			nan	embryonic/other	author	1779		True
+development	gastrula	EnM-Un1	EnM-Un1	EnM-Un1	embryonic/other	author	1666		True
+development	gastrula	EcM-Un1	EcM-Un1	EcM-Un1	embryonic/other	author	1547		True
+development	gastrula	Ec-SF1	Ec-SF1	Ec-SF1	epithelial/secretory	author	1377	7	True
+development	gastrula	Ec-SF2	Ec-SF2	Ec-SF2	epithelial/secretory	author	1305		True
+development	gastrula	Mes	Mes	Mes	embryonic/other	author	1258		True
+development	gastrula	EcM-Un2	EcM-Un2	EcM-Un2	embryonic/other	author	1092		True
+development	gastrula	Ec-Neu2	Ec-Neu2	Ec-Neu2	neural	author	873		True
+development	gastrula	Ec-Neu1	Ec-Neu1	Ec-Neu1	neural	author	813		True
+development	gastrula	Ec-Cil1	Ec-Cil1	Ec-Cil1	epithelial/secretory	author	656		True
+development	gastrula	EnM-Mus1	EnM-Mus1	EnM-Mus1	connective/muscle	author	594	2	True
+development	gastrula	Ec-Cil2	Ec-Cil2	Ec-Cil2	epithelial/secretory	author	507		True
+development	gastrula	Ec-Neu3	Ec-Neu3	Ec-Neu3	neural	author	391		True
+development	gastrula	EnM-Mus2	EnM-Mus2	EnM-Mus2	connective/muscle	author	356		True
+development	gastrula	EcM-Circ1	EcM-Circ1	EcM-Circ1	hemocyte	author	349		True
+development	gastrula	Ec-Neu5	Ec-Neu5	Ec-Neu5	neural	author	348	15	True
+development	gastrula	Ec-Neu4	Ec-Neu4	Ec-Neu4	neural	author	343		True
+development	gastrula	EcM-Neu6	EcM-Neu6	EcM-Neu6	neural	author	333		True
+development	gastrula	PGC	PGC	PGC	embryonic/other	author	308	14	True
+development	gastrula	Me-Circ2	Me-Circ2	Me-Circ2	hemocyte	author	240	1	True
+development	gastrula	Me-Circ3	Me-Circ3	Me-Circ3	hemocyte	author	169		True
+development	gastrula	Ec-Neu7	Ec-Neu7	Ec-Neu7	neural	author	126		True
+development	gastrula	Ec-Cil3	Ec-Cil3	Ec-Cil3	epithelial/secretory	author	33		True
+development	gastrula	Ec-Cil4	Ec-Cil4	Ec-Cil4	epithelial/secretory	author	32		True
+development	gastrula	Ec-Neu8			neural	author	19		False
+development	trochophore			nan	embryonic/other	author	1235		True
+development	trochophore	Unk	Unk	Unk	embryonic/other	author	570		True
+development	trochophore	Myo-Pax6+	Myo-Pax6+	Myo-Pax6+	connective/muscle	author	458		True
+development	trochophore	Myo-VVR	Myo-VVR	Myo-VVR	connective/muscle	author	381		True
+development	trochophore	Hem-2	Hem-2	Hem-2	hemocyte	author	373		True
+development	trochophore	Hem-3	Hem-3	Hem-3	hemocyte	author	368		True
+development	trochophore	Cilia-2	Cilia-2	Cilia-2	epithelial/secretory	author	355		True
+development	trochophore	Hem-4	Hem-4	Hem-4	hemocyte	author	349	1	True
+development	trochophore	13.21	13.21	13.21	embryonic/other	author	344		True
+development	trochophore	Hem-1	Hem-1	Hem-1	hemocyte	author	333	1	True
+development	trochophore	She-2	She-2	She-2	epithelial/secretory	author	277		True
+development	trochophore	Myo-AA	Myo-AA	Myo-AA	connective/muscle	author	254		True
+development	trochophore	Pro-3	Pro-3	Pro-3	embryonic/other	author	200		True
+development	trochophore	Myo-DVR-3	Myo-DVR-3	Myo-DVR-3	connective/muscle	author	198	2	True
+development	trochophore	Myo-DVR-2	Myo-DVR-2	Myo-DVR-2	connective/muscle	author	176		True
+development	trochophore	15	15	15	embryonic/other	author	149		True
+development	trochophore	Myo-DVR-1	Myo-DVR-1	Myo-DVR-1	connective/muscle	author	146		True
+development	trochophore	She-rel	She-rel	She-rel	epithelial/secretory	author	125		True
+development	trochophore	Cilia-1	Cilia-1	Cilia-1	epithelial/secretory	author	122		True
+development	trochophore	She-4	She-4	She-4	epithelial/secretory	author	120	7	True
+development	trochophore	25	25	25	embryonic/other	author	115		True
+development	trochophore	Unk-Apical	Unk-Apical	Unk-Apical	embryonic/other	author	111		True
+development	trochophore	Pro-4	Pro-4	Pro-4	embryonic/other	author	107		True
+development	trochophore	Myo-LVR-2	Myo-LVR-2	Myo-LVR-2	connective/muscle	author	97		True
+development	trochophore	Neu-Ap	Neu-Ap	Neu-Ap	neural	author	96		True
+development	trochophore	Pro-5	Pro-5	Pro-5	embryonic/other	author	82		True
+development	trochophore	Cilia-3	Cilia-3	Cilia-3	epithelial/secretory	author	81	8	True
+development	trochophore	She-1	She-1	She-1	epithelial/secretory	author	79		True
+development	trochophore	48	48	48	embryonic/other	author	63		True
+development	trochophore	Pro-1	Pro-1	Pro-1	embryonic/other	author	62		True
+development	trochophore	49	49	49	embryonic/other	author	50		True
+development	trochophore	Myo-LVR-1	Myo-LVR-1	Myo-LVR-1	connective/muscle	author	43		True
+development	trochophore	Pro-2	Pro-2	Pro-2	embryonic/other	author	33	15	True
+development	trochophore	Cilia-4	Cilia-4	Cilia-4	epithelial/secretory	author	27		True
+development	trochophore	Neu-Pos	Neu-Pos	Neu-Pos	neural	author	26		True
+development	trochophore	She-3	She-3	She-3	epithelial/secretory	author	24		True
+development	trochophore	She-5	She-5	She-5	epithelial/secretory	author	24		True
+development	trochophore	Pro-6			embryonic/other	author	18		False
+hemocyte	hemocyte	Hemocyte — macrophage-like (ML)	Hemocyte — macrophage-like (ML)		hemocyte	high	1080	1	True
+hemocyte	hemocyte	Hemocyte — small granule cells (SGC)	Hemocyte — small granule cells (SGC)		hemocyte	high	519	4	True
+hemocyte	hemocyte	Hemocyte — hyalinocytes (H)	Hemocyte — hyalinocytes (H)		hemocyte	high	448	1	True
+hemocyte	hemocyte	Hemocyte — vesicular cells (VC)	Hemocyte — vesicular cells (VC)		hemocyte	high	316	3	True
+hemocyte	hemocyte	Hemocyte — subtype unresolved	Hemocyte — subtype unresolved		hemocyte	low	284		True
+hemocyte	hemocyte	Hemocyte — hyalinocytes (H), ECM-high	Hemocyte — hyalinocytes (H), ECM-high		hemocyte	medium	233		True
+hemocyte	hemocyte	Hemocyte — blast-like (DLFD c5)	Hemocyte — blast-like (DLFD c5)		hemocyte	medium	193	9	True
+hemocyte	hemocyte	Hemocyte — blast-like, proliferating	Hemocyte — blast-like, proliferating		hemocyte	medium	165		True
+hemocyte	hemocyte	Hemocyte — blast-like/progenitor (DLFD c4)	Hemocyte — blast-like/progenitor (DLFD c4)		hemocyte	medium	164	16	True
+hemocyte	hemocyte	Hemocyte — blast-like (DLFD c6)	Hemocyte — blast-like (DLFD c6)		hemocyte	medium	96	5	True
+hemocyte	hemocyte	Hemocyte — blast-like (DLFD c6), hhex+/GATA-3+	Hemocyte — blast-like (DLFD c6), hhex+/GATA-3+		hemocyte	medium	67	17	True
+hemocyte	hemocyte	Contaminant — muscle cells in hemolymph	Contaminant — muscle cells in hemolymph		connective/muscle	high	63	2	True
+hemocyte	hemocyte	Hemocyte — granular, ZIP10+/copper-transport	Hemocyte — granular, ZIP10+/copper-transport		hemocyte	medium	60	7	True
+hemocyte	hemocyte	Hemocyte — subtype unresolved (phagocytic markers)	Hemocyte — subtype unresolved (phagocytic ma…		hemocyte	low	60		True
+hemocyte	hemocyte	Hemocyte — blast-like (DLFD c5), GIMAP+	Hemocyte — blast-like (DLFD c5), GIMAP+		hemocyte	medium	51	6	True
+hemocyte	hemocyte	Unresolved (16 cells)			unresolved	unresolved	16		False
+priming	priming	Hemocyte — small granule cells (SGC)	Hemocyte — small granule cells (SGC)		hemocyte	transfer	7562	4	True
+priming	priming	Hemocyte — subtype unresolved	Hemocyte — subtype unresolved		hemocyte	transfer	6077		True
+priming	priming	Hemocyte — macrophage-like (ML)	Hemocyte — macrophage-like (ML)		hemocyte	transfer	5989	1	True
+priming	priming	Hemocyte — vesicular cells (VC)	Hemocyte — vesicular cells (VC)		hemocyte	transfer	5208	3	True
+priming	priming	Contaminant — muscle cells in hemolymph	Contaminant — muscle cells in hemolymph		connective/muscle	transfer	3166	2	True
+priming	priming	Hemocyte — hyalinocytes (H)	Hemocyte — hyalinocytes (H)		hemocyte	transfer	2618	1	True
+priming	priming	Hemocyte — blast-like (DLFD c6)	Hemocyte — blast-like (DLFD c6)		hemocyte	transfer	2457	5	True
+priming	priming	Hemocyte — blast-like, proliferating	Hemocyte — blast-like, proliferating		hemocyte	transfer	2011		True
+priming	priming	Hemocyte — blast-like (DLFD c6), hhex+/GATA-3+	Hemocyte — blast-like (DLFD c6), hhex+/GATA-3+		hemocyte	transfer	1888	17	True
+priming	priming	Hemocyte — blast-like (DLFD c5)	Hemocyte — blast-like (DLFD c5)		hemocyte	transfer	1621	9	True
+priming	priming	Hemocyte — granular, ZIP10+/copper-transport	Hemocyte — granular, ZIP10+/copper-transport		hemocyte	transfer	1238	7	True
+priming	priming	Hemocyte — hyalinocytes (H), ECM-high	Hemocyte — hyalinocytes (H), ECM-high		hemocyte	transfer	905		True
+priming	priming	Hemocyte — blast-like (DLFD c5), GIMAP+	Hemocyte — blast-like (DLFD c5), GIMAP+		hemocyte	transfer	287	6	True
+priming	priming	Hemocyte — blast-like/progenitor (DLFD c4)	Hemocyte — blast-like/progenitor (DLFD c4)		hemocyte	transfer	257	16	True
+priming	priming	Hemocyte — subtype unresolved (phagocytic markers)	Hemocyte — subtype unresolved (phagocytic ma…		hemocyte	transfer	169		True
+priming	priming	Unresolved (16 cells)	Unresolved (16 cells)		unresolved	transfer	74		True
+gonad	gonad	Sertoli/niche (supporting) cells	Sertoli/niche (supporting) cells		gonad somatic	medium	6761		True
+gonad	gonad	Germ cells — spermatids/sperm (axonemal)	Germ cells — spermatids/sperm (axonemal)		germline	medium	5882		True
+gonad	gonad	VCT cells (vesicular connective tissue)	VCT cells (vesicular connective tissue)		gonad somatic	high	4253		True
+gonad	gonad	Myoepithelial / muscle-like somatic cells	Myoepithelial / muscle-like somatic cells		gonad somatic	high	3539	2	True
+gonad	gonad	Unresolved — s2f-specific, ribosome-high	Unresolved — s2f-specific, ribosome-high		unresolved	unresolved	3192		True
+gonad	gonad	Germ cells — meiotic (spermatocytes/oocytes, SYCP1+)	Germ cells — meiotic (spermatocytes/oocytes,…		germline	high	2166		True
+gonad	gonad	Germ cells — triploid-enriched, stress-high (β-gonia candidate)	Germ cells — triploid-enriched, stress-high …		germline	medium	1455		True
+gonad	gonad	Hemocyte-like (adhesive/motile)	Hemocyte-like (adhesive/motile)		hemocyte	medium	1412		True
+gonad	gonad	Shell-secreting mantle epithelium (adjacent tissue)	Shell-secreting mantle epithelium (adjacent …		epithelial/secretory	high	1382	18	True
+gonad	gonad	Hemocyte-like (or interstitial 'Leydig-like')	Hemocyte-like (or interstitial 'Leydig-like')		hemocyte	low	1290	10	True
+gonad	gonad	Ciliated cells (or developing oocytes)	Ciliated cells (or developing oocytes)		gonad somatic	low	1186	8	True
+gonad	gonad	Nerve-like cells	Nerve-like cells		neural	high	1147		True
+gonad	gonad	Hemocyte-like (motile, ceruloplasmin+)	Hemocyte-like (motile, ceruloplasmin+)		hemocyte	medium	1065	1	True
+gonad	gonad	Unresolved (polycystin/FGFR/netrin-receptor+)	Unresolved (polycystin/FGFR/netrin-receptor+)		unresolved	low	1006		True
+gonad	gonad	Germ cells — vitellogenic oocytes	Germ cells — vitellogenic oocytes		germline	high	890		True
+gonad	gonad	Hemocyte-like (PTPRε+)	Hemocyte-like (PTPRε+)		hemocyte	medium	528	6	True
+gonad	gonad	Unresolved (CD109/cathepsin L/Fat4+)	Unresolved (CD109/cathepsin L/Fat4+)		unresolved	unresolved	506		True
+gonad	gonad	Hemocyte-like (ZIP10+ granular)	Hemocyte-like (ZIP10+ granular)		hemocyte	medium	447	4	True
+gonad	gonad	Hemocyte-like (VC-like: NPFF receptor 2+/HAVCR1+)	Hemocyte-like (VC-like: NPFF receptor 2+/HAV…		hemocyte	medium	412	3	True
+gonad	gonad	Epithelial (chitin synthase+), origin unresolved	Epithelial (chitin synthase+), origin unreso…		epithelial/secretory	low	406		True
+gonad	gonad	Sertoli/niche-like (transporter-rich)	Sertoli/niche-like (transporter-rich)		gonad somatic	low	292	20	True
+gonad	gonad	Hemocyte-like (GATA-3+/Tec+, blast-like)	Hemocyte-like (GATA-3+/Tec+, blast-like)		hemocyte	medium	289	5	True
+gonad	gonad	Connective/ECM cells (cartilage matrix protein+)	Connective/ECM cells (cartilage matrix prote…		connective/muscle	low	242	13	True
+gonad	gonad	VCT cells (3n-specific)	VCT cells (3n-specific)		gonad somatic	medium	229		True
+gonad	gonad	Connective/ECM cells (basement membrane)	Connective/ECM cells (basement membrane)		connective/muscle	low	220		True
+gonad	gonad	Hemocyte-like (cathepsin K/C-type lectin+)	Hemocyte-like (cathepsin K/C-type lectin+)		hemocyte	medium	191	12	True
+gonad	gonad	Mucous secretory cells	Mucous secretory cells		epithelial/secretory	medium	163	11	True
+gonad	gonad	Proliferating (mitotic) cells	Proliferating (mitotic) cells		gonad somatic	medium	140		True
+gonad	gonad	Hemocyte-like (retinoid-inducible serine carboxypeptidase+)	Hemocyte-like (retinoid-inducible serine car…		hemocyte	low	114	19	True
+gonad	gonad	Hemocyte-like? (CD109/ITIH+, 51 cells)	Hemocyte-like? (CD109/ITIH+, 51 cells)		hemocyte	low	51		True
+gonad	gonad	Unresolved (15 cells; cubilin/amnionless+)			unresolved	unresolved	15		False
+ganglia	ganglia	Glia — metabolic/transporter glia (GAT/taurine transporter/MCT+) [author: Metabolic glial cells 3]	Glia — metabolic/transporter glia (GAT/tauri…	Metabolic glial cells 3	neural	high	4012	20	True
+ganglia	ganglia	Ciliated epithelial cells (CG-enriched) [author: Ciliated epithelial cells]	Ciliated epithelial cells (CG-enriched)	Ciliated epithelial cells	epithelial/secretory	high	3655	8	True
+ganglia	ganglia	Epithelial (chitin synthase+/MAM+), adjacent tissue? [author: Secretory epithelial cells 1]	Epithelial (chitin synthase+/MAM+), adjacent…	Secretory epithelial cells 1	epithelial/secretory	medium	2707		True
+ganglia	ganglia	Neuron — subtype unresolved	Neuron — subtype unresolved		neural	medium	2313		True
+ganglia	ganglia	Neural progenitor cells 1 (author-derived)	Neural progenitor cells 1 (author-derived)		neural	low	2223	13	True
+ganglia	ganglia	Unresolved — ribosome-high	Unresolved — ribosome-high		unresolved	unresolved	2027		True
+ganglia	ganglia	Hemocyte-like / connective (TGFBI+) [author: Hemocytes]	Hemocyte-like / connective (TGFBI+)	Hemocytes	hemocyte	medium	1595		True
+ganglia	ganglia	Hemocyte-like (ZIP10+/galectin-9+ granular) [author: Sinus lining cells]	Hemocyte-like (ZIP10+/galectin-9+ granular)	Sinus lining cells	hemocyte	low	1283	4	True
+ganglia	ganglia	Neuron — subtype unresolved [author: Neurons 3]	Neuron — subtype unresolved	Neurons 3	neural	high	1011		True
+ganglia	ganglia	Connective/muscle (collagen/titin+) [author: Muscle cells]	Connective/muscle (collagen/titin+)	Muscle cells	connective/muscle	high	1004	2	True
+ganglia	ganglia	Neuron — monoaminergic [author: Neurons 4]	Neuron — monoaminergic	Neurons 4	neural	high	923		True
+ganglia	ganglia	Hemocyte-like (MPEG1+/PTPRε+) [author: Phagocytic glial cells 1]	Hemocyte-like (MPEG1+/PTPRε+)	Phagocytic glial cells 1	hemocyte	medium	919		True
+ganglia	ganglia	Epithelial (DMBT1/CYP+), adjacent tissue? [author: Digestive tract epithelial cells 1]	Epithelial (DMBT1/CYP+), adjacent tissue?	Digestive tract epithelial cells 1	epithelial/secretory	medium	847		True
+ganglia	ganglia	Neuron — sensory-like (polycystin-2+/POU4+) [author: Sensory neurons]	Neuron — sensory-like (polycystin-2+/POU4+)	Sensory neurons	neural	medium	824	21	True
+ganglia	ganglia	Hemocyte-like (DUOX2+) [author: Sinus lining cells 1]	Hemocyte-like (DUOX2+)	Sinus lining cells 1	hemocyte	low	792	1	True
+ganglia	ganglia	Neuron — cholinergic [author: Neurons 2]	Neuron — cholinergic	Neurons 2	neural	high	781		True
+ganglia	ganglia	Digestive tract epithelial cells 2 (author-derived)	Digestive tract epithelial cells 2 (author-d…		epithelial/secretory	low	690		True
+ganglia	ganglia	Hemocyte-like (mannose receptor+, = gonad:3 type) [author: Sinus lining cells 2]	Hemocyte-like (mannose receptor+, = gonad:3 …	Sinus lining cells 2	hemocyte	low	655	10	True
+ganglia	ganglia	Digestive tract epithelial cells 3 (author-derived)	Digestive tract epithelial cells 3 (author-d…		epithelial/secretory	low	652		True
+ganglia	ganglia	Hemocyte-like (GATA-3+/Tec+) [author: Phagocytic glial cells 1]	Hemocyte-like (GATA-3+/Tec+)	Phagocytic glial cells 1	hemocyte	low	650	5	True
+ganglia	ganglia	Hemocyte-like (peroxidase/LBP+) [author: Phagocytic glial cells 2]	Hemocyte-like (peroxidase/LBP+)	Phagocytic glial cells 2	hemocyte	low	642		True
+ganglia	ganglia	Glia-like (transporter-rich, subtype 2) [author: Neurons 1]	Glia-like (transporter-rich, subtype 2)	Neurons 1	neural	medium	536		True
+ganglia	ganglia	Hemocyte-like / connective (ceruloplasmin+)	Hemocyte-like / connective (ceruloplasmin+)		hemocyte	low	489	1	True
+ganglia	ganglia	Neuron — peptidergic [author: Neuroendocrine cells 1]	Neuron — peptidergic	Neuroendocrine cells 1	neural	high	464		True
+ganglia	ganglia	Neuron — cholinergic	Neuron — cholinergic		neural	medium	389		True
+ganglia	ganglia	Mucous secretory cells [author: Secretory epithelial cells 2]	Mucous secretory cells	Secretory epithelial cells 2	epithelial/secretory	high	387		True
+ganglia	ganglia	Hemocyte-like (MPEG-lineage, GIMAP4+) [author: Phagocytic glial cells 3]	Hemocyte-like (MPEG-lineage, GIMAP4+)	Phagocytic glial cells 3	hemocyte	low	371		True
+ganglia	ganglia	Ciliated cells (axonemal)	Ciliated cells (axonemal)		epithelial/secretory	medium	331	14	True
+ganglia	ganglia	Mucous secretory cells (glutamate-receptor+) [author: Neuroendocrine cells 2]	Mucous secretory cells (glutamate-receptor+)	Neuroendocrine cells 2	epithelial/secretory	low	303	11	True
+ganglia	ganglia	Neuron — subtype unresolved [author: Neurons 5]	Neuron — subtype unresolved	Neurons 5	neural	high	301		True
+ganglia	ganglia	Neuron — subtype unresolved [author: Neurons 1]	Neuron — subtype unresolved	Neurons 1	neural	high	282		True
+ganglia	ganglia	Neuron — ciliated sensory (polycystin+, cholinergic) [author: Neurons 2]	Neuron — ciliated sensory (polycystin+, chol…	Neurons 2	neural	high	281		True
+ganglia	ganglia	Hemocyte-like (MEGF10/draper+, phagocytic) [author: Phagocytic glial cells 1]	Hemocyte-like (MEGF10/draper+, phagocytic)	Phagocytic glial cells 1	hemocyte	low	279	6	True
+ganglia	ganglia	Unresolved — ribosome/lipogenic	Unresolved — ribosome/lipogenic		unresolved	unresolved	277		True
+ganglia	ganglia	Neuron — peptidergic [author: Neurons 4]	Neuron — peptidergic	Neurons 4	neural	high	251		True
+ganglia	ganglia	Hemocyte-like (cathepsin K+, = gonad:23 type)	Hemocyte-like (cathepsin K+, = gonad:23 type)		hemocyte	medium	236	12	True
+ganglia	ganglia	Neuron — peptidergic [author: Neurons 5]	Neuron — peptidergic	Neurons 5	neural	high	220		True
+ganglia	ganglia	Hemocyte-like (CDPK/CYP2B4+) [author: Phagocytic glial cells 1]	Hemocyte-like (CDPK/CYP2B4+)	Phagocytic glial cells 1	hemocyte	low	175	9	True
+ganglia	ganglia	Neuron — subtype unresolved [author: Neuroendocrine cells 2]	Neuron — subtype unresolved	Neuroendocrine cells 2	neural	high	163		True
+ganglia	ganglia	Muscle cells [author: Muscle cells]	Muscle cells	Muscle cells	connective/muscle	high	162	2	True
+ganglia	ganglia	Neuron — subtype unresolved (Lhx5+)	Neuron — subtype unresolved (Lhx5+)		neural	low	139		True
+ganglia	ganglia	Neuron — peptidergic [author: Neuroendocrine cells 2]	Neuron — peptidergic	Neuroendocrine cells 2	neural	high	129		True
+ganglia	ganglia	Neuron — subtype unresolved [author: Neuroendocrine cells 3]	Neuron — subtype unresolved	Neuroendocrine cells 3	neural	high	119		True
+ganglia	ganglia	Glia-like (EAAT+/MATE+/OCT+) [author: Neurons 3]	Glia-like (EAAT+/MATE+/OCT+)	Neurons 3	neural	high	108		True
+ganglia	ganglia	Hemocyte-like (retinoid-inducible serine carboxypeptidase+)	Hemocyte-like (retinoid-inducible serine car…		hemocyte	low	100	19	True
+ganglia	ganglia	Neuron — peptidergic	Neuron — peptidergic		neural	medium	100		True
+ganglia	ganglia	Connective/ECM (fibulin/matrilin+) [author: Hemocytes]	Connective/ECM (fibulin/matrilin+)	Hemocytes	connective/muscle	low	95	22	True
+ganglia	ganglia	Hemocyte-like (VC-like: HAVCR1+/NPFF receptor 2+) [author: Hemocytes]	Hemocyte-like (VC-like: HAVCR1+/NPFF recepto…	Hemocytes	hemocyte	high	71	3	True
+ganglia	ganglia	Unresolved (61 cells)	Unresolved (61 cells)		unresolved	unresolved	61		True
+ganglia	ganglia	Neuron — subtype unresolved [author: Neurons 2]	Neuron — subtype unresolved	Neurons 2	neural	high	54		True
+ganglia	ganglia	Neuron — ciliated sensory (cholinergic, polycystin+) [author: Neurons 2]	Neuron — ciliated sensory (cholinergic, poly…	Neurons 2	neural	high	28		True
+ganglia	ganglia	Neuron — subtype unresolved [author: Neuroendocrine cells 1]	Neuron — subtype unresolved	Neuroendocrine cells 1	neural	high	21		True
+mantle	mantle	Hemocyte-like (granular/SGC-like, galectin-9+)	Hemocyte-like (granular/SGC-like, galectin-9+)		hemocyte	medium	5715	4	True
+mantle	mantle	Hemocyte-like (C1q-TNF/adiponectin+, M1 member)	Hemocyte-like (C1q-TNF/adiponectin+, M1 memb…		hemocyte	medium	3874	22	True
+mantle	mantle	Muscle/connective (adductor actin/collagen+)	Muscle/connective (adductor actin/collagen+)		connective/muscle	medium	2093		True
+mantle	mantle	Ciliated cells	Ciliated cells		epithelial/secretory	medium	1947	8	True
+mantle	mantle	Hemocyte-like (SOD/LDLR/serum amyloid A+)	Hemocyte-like (SOD/LDLR/serum amyloid A+)		hemocyte	medium	1591	10	True
+mantle	mantle	Unresolved — ribosome-high	Unresolved — ribosome-high		unresolved	unresolved	1547		True
+mantle	mantle	Hyalinocyte-like or connective (TIMP+)	Hyalinocyte-like or connective (TIMP+)		hemocyte	low	1508	1	True
+mantle	mantle	Shell-secreting epithelium (gigasin-6/DSPP+)	Shell-secreting epithelium (gigasin-6/DSPP+)		epithelial/secretory	high	1370	18	True
+mantle	mantle	Hemocyte-like (cathepsin K+, = gonad:23 type)	Hemocyte-like (cathepsin K+, = gonad:23 type)		hemocyte	low	1351	12	True
+mantle	mantle	Muscle cells	Muscle cells		connective/muscle	high	1120	2	True
+mantle	mantle	Hemocyte-like (natterin-3+)	Hemocyte-like (natterin-3+)		hemocyte	medium	1113	5	True
+mantle	mantle	Connective (cartilage matrix protein+)	Connective (cartilage matrix protein+)		connective/muscle	low	946	13	True
+mantle	mantle	Neuron — peptidergic (7B2+)	Neuron — peptidergic (7B2+)		neural	medium	920		True
+mantle	mantle	Shell-secreting epithelium (tyrosinase+/mantle protein+)	Shell-secreting epithelium (tyrosinase+/mant…		epithelial/secretory	medium	632		True
+mantle	mantle	Hemocyte-like (Elf-3/neuropilin+)	Hemocyte-like (Elf-3/neuropilin+)		hemocyte	medium	624	6	True
+mantle	mantle	Hemocyte-like (VC-like: Rab-20/NPFF receptor 2+)	Hemocyte-like (VC-like: Rab-20/NPFF receptor…		hemocyte	medium	527	3	True
+mantle	mantle	Mucous secretory cells (mucin/PIF+)	Mucous secretory cells (mucin/PIF+)		epithelial/secretory	medium	456	11	True
+mantle	mantle	Unresolved (eppin/TIMP3+)	Unresolved (eppin/TIMP3+)		unresolved	unresolved	363		True
+mantle	mantle	Neuron — sensory-like (polycystin-2+)	Neuron — sensory-like (polycystin-2+)		neural	medium	345	21	True
+mantle	mantle	Unresolved (PCDH23/PGRP/Musashi+)	Unresolved (PCDH23/PGRP/Musashi+)		unresolved	low	218		True
+mantle	mantle	Unresolved (C-type lectin/PC1+)	Unresolved (C-type lectin/PC1+)		unresolved	low	197		True
+mantle	mantle	Hemocyte-like? (rhamnose-binding lectin+)	Hemocyte-like? (rhamnose-binding lectin+)		hemocyte	low	159		True
+mantle	mantle	Neuron — peptidergic-like	Neuron — peptidergic-like		neural	low	159		True
+mantle	mantle	Unresolved (138 cells)	Unresolved (138 cells)		unresolved	unresolved	138		True

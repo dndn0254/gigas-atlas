@@ -1,0 +1,81 @@
+family	lineage	dataset	cell_type
+1	hemocyte	gastrula	Me-Circ2
+1	hemocyte	trochophore	Hem-1
+1	hemocyte	trochophore	Hem-4
+1	hemocyte	hemocyte	Hemocyte — macrophage-like (ML)
+1	hemocyte	hemocyte	Hemocyte — hyalinocytes (H)
+1	hemocyte	gonad	Hemocyte-like (motile, ceruloplasmin+)
+1	hemocyte	ganglia	Hemocyte-like (DUOX2+)
+1	hemocyte	ganglia	Hemocyte-like / connective (ceruloplasmin+)
+1	hemocyte	mantle	Hyalinocyte-like or connective (TIMP+)
+1	hemocyte	priming	Hemocyte — macrophage-like (ML)
+1	hemocyte	priming	Hemocyte — hyalinocytes (H)
+2	connective/muscle	gastrula	EnM-Mus1
+2	connective/muscle	trochophore	Myo-DVR-3
+2	connective/muscle	hemocyte	Contaminant — muscle cells in hemolymph
+2	connective/muscle	gonad	Myoepithelial / muscle-like somatic cells
+2	connective/muscle	ganglia	Connective/muscle (collagen/titin+)
+2	connective/muscle	ganglia	Muscle cells
+2	connective/muscle	mantle	Muscle cells
+2	connective/muscle	priming	Contaminant — muscle cells in hemolymph
+3	hemocyte	hemocyte	Hemocyte — vesicular cells (VC)
+3	hemocyte	gonad	Hemocyte-like (VC-like: NPFF receptor 2+/HAVCR1+)
+3	hemocyte	ganglia	Hemocyte-like (VC-like: HAVCR1+/NPFF receptor 2+)
+3	hemocyte	mantle	Hemocyte-like (VC-like: Rab-20/NPFF receptor 2+)
+3	hemocyte	priming	Hemocyte — vesicular cells (VC)
+4	hemocyte	hemocyte	Hemocyte — small granule cells (SGC)
+4	hemocyte	gonad	Hemocyte-like (ZIP10+ granular)
+4	hemocyte	ganglia	Hemocyte-like (ZIP10+/galectin-9+ granular)
+4	hemocyte	mantle	Hemocyte-like (granular/SGC-like, galectin-9+)
+4	hemocyte	priming	Hemocyte — small granule cells (SGC)
+5	hemocyte	hemocyte	Hemocyte — blast-like (DLFD c6)
+5	hemocyte	gonad	Hemocyte-like (GATA-3+/Tec+, blast-like)
+5	hemocyte	ganglia	Hemocyte-like (GATA-3+/Tec+)
+5	hemocyte	mantle	Hemocyte-like (natterin-3+)
+5	hemocyte	priming	Hemocyte — blast-like (DLFD c6)
+6	hemocyte	hemocyte	Hemocyte — blast-like (DLFD c5), GIMAP+
+6	hemocyte	gonad	Hemocyte-like (PTPRε+)
+6	hemocyte	ganglia	Hemocyte-like (MEGF10/draper+, phagocytic)
+6	hemocyte	mantle	Hemocyte-like (Elf-3/neuropilin+)
+6	hemocyte	priming	Hemocyte — blast-like (DLFD c5), GIMAP+
+7	epithelial/secretory	gastrula	Ec-SF1
+7	epithelial/secretory	trochophore	She-4
+7	epithelial/secretory	hemocyte	Hemocyte — granular, ZIP10+/copper-transport
+7	epithelial/secretory	priming	Hemocyte — granular, ZIP10+/copper-transport
+8	epithelial/secretory	trochophore	Cilia-3
+8	epithelial/secretory	gonad	Ciliated cells (or developing oocytes)
+8	epithelial/secretory	ganglia	Ciliated epithelial cells (CG-enriched)
+8	epithelial/secretory	mantle	Ciliated cells
+9	hemocyte	hemocyte	Hemocyte — blast-like (DLFD c5)
+9	hemocyte	ganglia	Hemocyte-like (CDPK/CYP2B4+)
+9	hemocyte	priming	Hemocyte — blast-like (DLFD c5)
+10	hemocyte	gonad	Hemocyte-like (or interstitial 'Leydig-like')
+10	hemocyte	ganglia	Hemocyte-like (mannose receptor+, = gonad:3 type)
+10	hemocyte	mantle	Hemocyte-like (SOD/LDLR/serum amyloid A+)
+11	epithelial/secretory	gonad	Mucous secretory cells
+11	epithelial/secretory	ganglia	Mucous secretory cells (glutamate-receptor+)
+11	epithelial/secretory	mantle	Mucous secretory cells (mucin/PIF+)
+12	hemocyte	gonad	Hemocyte-like (cathepsin K/C-type lectin+)
+12	hemocyte	ganglia	Hemocyte-like (cathepsin K+, = gonad:23 type)
+12	hemocyte	mantle	Hemocyte-like (cathepsin K+, = gonad:23 type)
+13	connective/muscle	gonad	Connective/ECM cells (cartilage matrix protein+)
+13	connective/muscle	ganglia	Neural progenitor cells 1 (author-derived)
+13	connective/muscle	mantle	Connective (cartilage matrix protein+)
+14	embryonic/other	gastrula	PGC
+14	embryonic/other	ganglia	Ciliated cells (axonemal)
+15	neural	gastrula	Ec-Neu5
+15	neural	trochophore	Pro-2
+16	hemocyte	hemocyte	Hemocyte — blast-like/progenitor (DLFD c4)
+16	hemocyte	priming	Hemocyte — blast-like/progenitor (DLFD c4)
+17	hemocyte	hemocyte	Hemocyte — blast-like (DLFD c6), hhex+/GATA-3+
+17	hemocyte	priming	Hemocyte — blast-like (DLFD c6), hhex+/GATA-3+
+18	epithelial/secretory	gonad	Shell-secreting mantle epithelium (adjacent tissue)
+18	epithelial/secretory	mantle	Shell-secreting epithelium (gigasin-6/DSPP+)
+19	hemocyte	gonad	Hemocyte-like (retinoid-inducible serine carboxypeptidase+)
+19	hemocyte	ganglia	Hemocyte-like (retinoid-inducible serine carboxypeptidase+)
+20	gonad somatic	gonad	Sertoli/niche-like (transporter-rich)
+20	gonad somatic	ganglia	Glia — metabolic/transporter glia (GAT/taurine transporter/MCT+)
+21	neural	ganglia	Neuron — sensory-like (polycystin-2+/POU4+)
+21	neural	mantle	Neuron — sensory-like (polycystin-2+)
+22	connective/muscle	ganglia	Connective/ECM (fibulin/matrilin+)
+22	connective/muscle	mantle	Hemocyte-like (C1q-TNF/adiponectin+, M1 member)

@@ -1,0 +1,91 @@
+cell_type_a	dataset_a	cell_type_b	dataset_b	auroc	stable_in_runs_of_9	base_run_match	family
+Hemocyte-like (DUOX2+) [author: Sinus lining cells 1]	ganglia	Hemocyte — macrophage-like (ML)	hemocyte	0.9896	9	True	1
+Me-Circ2	gastrula	Hem-1	trochophore	0.9893	9	True	1
+Hemocyte — macrophage-like (ML)	hemocyte	Hem-4	trochophore	0.9837	9	True	1
+Hemocyte-like / connective (ceruloplasmin+)	ganglia	Hemocyte-like (motile, ceruloplasmin+)	gonad	0.9756	9	True	1
+Me-Circ2	gastrula	Hemocyte — macrophage-like (ML)	hemocyte	0.9704	8	True	1
+Hemocyte — hyalinocytes (H)	hemocyte	Hemocyte — hyalinocytes (H)	priming	0.9694	9	True	1
+Hyalinocyte-like or connective (TIMP+)	mantle	Hemocyte — hyalinocytes (H)	priming	0.9583	9	True	1
+Hemocyte-like (motile, ceruloplasmin+)	gonad	Hyalinocyte-like or connective (TIMP+)	mantle	0.9487	9	True	1
+Me-Circ2	gastrula	Hyalinocyte-like or connective (TIMP+)	mantle	0.9481	9	True	1
+Hemocyte — hyalinocytes (H)	hemocyte	Hyalinocyte-like or connective (TIMP+)	mantle	0.9467	6	True	1
+Hemocyte-like / connective (ceruloplasmin+)	ganglia	Hyalinocyte-like or connective (TIMP+)	mantle	0.9419	9	True	1
+Hemocyte — macrophage-like (ML)	hemocyte	Hemocyte — macrophage-like (ML)	priming	0.9336	9	True	1
+Hemocyte-like / connective (ceruloplasmin+)	ganglia	Hemocyte — hyalinocytes (H)	priming	0.927	7	True	1
+Hemocyte-like / connective (ceruloplasmin+)	ganglia	Hemocyte — hyalinocytes (H)	hemocyte	0.9257	7	True	1
+Muscle cells [author: Muscle cells]	ganglia	EnM-Mus1	gastrula	0.9933	9	True	2
+Connective/muscle (collagen/titin+) [author: Muscle cells]	ganglia	Myoepithelial / muscle-like somatic cells	gonad	0.9917	9	True	2
+Contaminant — muscle cells in hemolymph	hemocyte	Contaminant — muscle cells in hemolymph	priming	0.9893	9	True	2
+Myoepithelial / muscle-like somatic cells	gonad	Muscle cells	mantle	0.9871	9	True	2
+Connective/muscle (collagen/titin+) [author: Muscle cells]	ganglia	Muscle cells	mantle	0.9868	9	True	2
+Muscle cells [author: Muscle cells]	ganglia	Myo-DVR-3	trochophore	0.9788	6	True	2
+EnM-Mus1	gastrula	Muscle cells	mantle	0.9728	9	True	2
+Myoepithelial / muscle-like somatic cells	gonad	Myo-DVR-3	trochophore	0.9689	6	True	2
+Muscle cells	mantle	Contaminant — muscle cells in hemolymph	priming	0.9316	9	True	2
+Muscle cells [author: Muscle cells]	ganglia	Contaminant — muscle cells in hemolymph	hemocyte	0.9261	9	True	2
+Muscle cells [author: Muscle cells]	ganglia	Contaminant — muscle cells in hemolymph	priming	0.9231	7	True	2
+EnM-Mus1	gastrula	Myoepithelial / muscle-like somatic cells	gonad	0.9225	6	True	2
+Myoepithelial / muscle-like somatic cells	gonad	Contaminant — muscle cells in hemolymph	priming	0.9197	6	True	2
+Hemocyte — vesicular cells (VC)	hemocyte	Hemocyte — vesicular cells (VC)	priming	1.0	9	True	3
+Hemocyte-like (VC-like: HAVCR1+/NPFF receptor 2+) [author: Hemocytes]	ganglia	Hemocyte — vesicular cells (VC)	priming	1.0	9	True	3
+Hemocyte-like (VC-like: HAVCR1+/NPFF receptor 2+) [author: Hemocytes]	ganglia	Hemocyte — vesicular cells (VC)	hemocyte	1.0	9	True	3
+Hemocyte-like (VC-like: HAVCR1+/NPFF receptor 2+) [author: Hemocytes]	ganglia	Hemocyte-like (VC-like: NPFF receptor 2+/HAVCR1+)	gonad	0.9987	9	True	3
+Hemocyte-like (VC-like: NPFF receptor 2+/HAVCR1+)	gonad	Hemocyte — vesicular cells (VC)	priming	0.9987	9	True	3
+Hemocyte-like (VC-like: NPFF receptor 2+/HAVCR1+)	gonad	Hemocyte — vesicular cells (VC)	hemocyte	0.9963	9	True	3
+Hemocyte-like (VC-like: HAVCR1+/NPFF receptor 2+) [author: Hemocytes]	ganglia	Hemocyte-like (VC-like: Rab-20/NPFF receptor 2+)	mantle	0.9859	9	True	3
+Hemocyte-like (VC-like: NPFF receptor 2+/HAVCR1+)	gonad	Hemocyte-like (VC-like: Rab-20/NPFF receptor 2+)	mantle	0.9848	9	True	3
+Hemocyte-like (VC-like: Rab-20/NPFF receptor 2+)	mantle	Hemocyte — vesicular cells (VC)	priming	0.9794	9	True	3
+Hemocyte — vesicular cells (VC)	hemocyte	Hemocyte-like (VC-like: Rab-20/NPFF receptor 2+)	mantle	0.9597	9	True	3
+Hemocyte-like (ZIP10+/galectin-9+ granular) [author: Sinus lining cells]	ganglia	Hemocyte-like (ZIP10+ granular)	gonad	0.9964	9	True	4
+Hemocyte-like (ZIP10+/galectin-9+ granular) [author: Sinus lining cells]	ganglia	Hemocyte — small granule cells (SGC)	hemocyte	0.9929	9	True	4
+Hemocyte — small granule cells (SGC)	hemocyte	Hemocyte — small granule cells (SGC)	priming	0.9757	9	True	4
+Hemocyte-like (ZIP10+ granular)	gonad	Hemocyte-like (granular/SGC-like, galectin-9+)	mantle	0.9503	9	True	4
+Hemocyte — small granule cells (SGC)	hemocyte	Hemocyte-like (granular/SGC-like, galectin-9+)	mantle	0.9485	9	True	4
+Hemocyte-like (ZIP10+/galectin-9+ granular) [author: Sinus lining cells]	ganglia	Hemocyte-like (granular/SGC-like, galectin-9+)	mantle	0.9482	9	True	4
+Hemocyte-like (granular/SGC-like, galectin-9+)	mantle	Hemocyte — small granule cells (SGC)	priming	0.9191	9	True	4
+Hemocyte-like (GATA-3+/Tec+) [author: Phagocytic glial cells 1]	ganglia	Hemocyte — blast-like (DLFD c6)	hemocyte	0.9984	9	True	5
+Hemocyte-like (GATA-3+/Tec+, blast-like)	gonad	Hemocyte — blast-like (DLFD c6)	hemocyte	0.998	9	True	5
+Hemocyte-like (GATA-3+/Tec+) [author: Phagocytic glial cells 1]	ganglia	Hemocyte-like (GATA-3+/Tec+, blast-like)	gonad	0.9969	9	True	5
+Hemocyte-like (GATA-3+/Tec+, blast-like)	gonad	Hemocyte-like (natterin-3+)	mantle	0.9959	9	True	5
+Hemocyte-like (GATA-3+/Tec+) [author: Phagocytic glial cells 1]	ganglia	Hemocyte — blast-like (DLFD c6)	priming	0.9956	9	True	5
+Hemocyte-like (GATA-3+/Tec+) [author: Phagocytic glial cells 1]	ganglia	Hemocyte-like (natterin-3+)	mantle	0.9954	9	True	5
+Hemocyte — blast-like (DLFD c6)	hemocyte	Hemocyte — blast-like (DLFD c6)	priming	0.9948	9	True	5
+Hemocyte — blast-like (DLFD c6)	hemocyte	Hemocyte-like (natterin-3+)	mantle	0.9945	9	True	5
+Hemocyte-like (GATA-3+/Tec+, blast-like)	gonad	Hemocyte — blast-like (DLFD c6)	priming	0.9929	9	True	5
+Hemocyte-like (natterin-3+)	mantle	Hemocyte — blast-like (DLFD c6)	priming	0.9923	9	True	5
+Hemocyte-like (MEGF10/draper+, phagocytic) [author: Phagocytic glial cells 1]	ganglia	Hemocyte — blast-like (DLFD c5), GIMAP+	hemocyte	0.9989	9	True	6
+Hemocyte — blast-like (DLFD c5), GIMAP+	hemocyte	Hemocyte — blast-like (DLFD c5), GIMAP+	priming	0.9976	9	True	6
+Hemocyte-like (MEGF10/draper+, phagocytic) [author: Phagocytic glial cells 1]	ganglia	Hemocyte — blast-like (DLFD c5), GIMAP+	priming	0.9925	9	True	6
+Hemocyte-like (PTPRε+)	gonad	Hemocyte-like (Elf-3/neuropilin+)	mantle	0.9705	9	True	6
+Hemocyte — blast-like (DLFD c5), GIMAP+	hemocyte	Hemocyte-like (Elf-3/neuropilin+)	mantle	0.9633	9	True	6
+Hemocyte-like (Elf-3/neuropilin+)	mantle	Hemocyte — blast-like (DLFD c5), GIMAP+	priming	0.9577	8	True	6
+Ec-SF1	gastrula	She-4	trochophore	0.9909	9	True	7
+Hemocyte — granular, ZIP10+/copper-transport	hemocyte	Hemocyte — granular, ZIP10+/copper-transport	priming	0.9687	9	True	7
+Ec-SF1	gastrula	Hemocyte — granular, ZIP10+/copper-transport	hemocyte	0.9347	9	True	7
+Ciliated epithelial cells (CG-enriched) [author: Ciliated epithelial cells]	ganglia	Ciliated cells	mantle	0.9739	8	True	8
+Ciliated cells	mantle	Cilia-3	trochophore	0.9559	9	True	8
+Ciliated cells (or developing oocytes)	gonad	Cilia-3	trochophore	0.94	6	True	8
+Hemocyte-like (CDPK/CYP2B4+) [author: Phagocytic glial cells 1]	ganglia	Hemocyte — blast-like (DLFD c5)	hemocyte	0.9979	9	True	9
+Hemocyte — blast-like (DLFD c5)	hemocyte	Hemocyte — blast-like (DLFD c5)	priming	0.9971	9	True	9
+Hemocyte-like (CDPK/CYP2B4+) [author: Phagocytic glial cells 1]	ganglia	Hemocyte — blast-like (DLFD c5)	priming	0.9957	9	True	9
+Hemocyte-like (mannose receptor+, = gonad:3 type) [author: Sinus lining cells 2]	ganglia	Hemocyte-like (or interstitial 'Leydig-like')	gonad	0.9994	9	True	10
+Hemocyte-like (mannose receptor+, = gonad:3 type) [author: Sinus lining cells 2]	ganglia	Hemocyte-like (SOD/LDLR/serum amyloid A+)	mantle	0.9936	9	True	10
+Hemocyte-like (or interstitial 'Leydig-like')	gonad	Hemocyte-like (SOD/LDLR/serum amyloid A+)	mantle	0.9926	9	True	10
+Mucous secretory cells (glutamate-receptor+) [author: Neuroendocrine cells 2]	ganglia	Mucous secretory cells	gonad	0.995	9	True	11
+Mucous secretory cells (glutamate-receptor+) [author: Neuroendocrine cells 2]	ganglia	Mucous secretory cells (mucin/PIF+)	mantle	0.9669	9	True	11
+Mucous secretory cells	gonad	Mucous secretory cells (mucin/PIF+)	mantle	0.9317	9	True	11
+Hemocyte-like (cathepsin K+, = gonad:23 type)	ganglia	Hemocyte-like (cathepsin K/C-type lectin+)	gonad	0.9985	9	True	12
+Hemocyte-like (cathepsin K/C-type lectin+)	gonad	Hemocyte-like (cathepsin K+, = gonad:23 type)	mantle	0.985	9	True	12
+Hemocyte-like (cathepsin K+, = gonad:23 type)	ganglia	Hemocyte-like (cathepsin K+, = gonad:23 type)	mantle	0.9813	9	True	12
+Neural progenitor cells 1 (author-derived)	ganglia	Connective/ECM cells (cartilage matrix protein+)	gonad	0.9955	9	True	13
+Connective/ECM cells (cartilage matrix protein+)	gonad	Connective (cartilage matrix protein+)	mantle	0.9911	9	True	13
+Neural progenitor cells 1 (author-derived)	ganglia	Connective (cartilage matrix protein+)	mantle	0.9676	9	True	13
+Ciliated cells (axonemal)	ganglia	PGC	gastrula	0.9256	7	True	14
+Ec-Neu5	gastrula	Pro-2	trochophore	0.9865	9	True	15
+Hemocyte — blast-like/progenitor (DLFD c4)	hemocyte	Hemocyte — blast-like/progenitor (DLFD c4)	priming	0.9748	9	True	16
+Hemocyte — blast-like (DLFD c6), hhex+/GATA-3+	hemocyte	Hemocyte — blast-like (DLFD c6), hhex+/GATA-3+	priming	0.9786	6	True	17
+Shell-secreting mantle epithelium (adjacent tissue)	gonad	Shell-secreting epithelium (gigasin-6/DSPP+)	mantle	0.9751	9	True	18
+Hemocyte-like (retinoid-inducible serine carboxypeptidase+)	ganglia	Hemocyte-like (retinoid-inducible serine carboxypeptidase+)	gonad	0.9952	9	True	19
+Glia — metabolic/transporter glia (GAT/taurine transporter/MCT+) [author: Metabolic glial cells 3]	ganglia	Sertoli/niche-like (transporter-rich)	gonad	0.9971	9	True	20
+Neuron — sensory-like (polycystin-2+/POU4+) [author: Sensory neurons]	ganglia	Neuron — sensory-like (polycystin-2+)	mantle	0.9847	9	True	21
+Connective/ECM (fibulin/matrilin+) [author: Hemocytes]	ganglia	Hemocyte-like (C1q-TNF/adiponectin+, M1 member)	mantle	0.9323	9	True	22

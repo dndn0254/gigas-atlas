@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Gigas Cell Atlas: 186,414 Pacific oyster cells from 8 public single-cell studies, reprocessed on one genome (xbMagGiga1.1).">
+<meta property="og:title" content="Gigas Cell Atlas Explorer">
+<meta property="og:description" content="Gigas Cell Atlas: 186,414 Pacific oyster cells from 8 public single-cell studies, reprocessed on one genome (xbMagGiga1.1).">
+<meta name="theme-color" content="#040606">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Gigas Cell Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* Dark single-theme design: near-black ground, glowing cell maps, nacre (mother-of-pearl) gradient as the one accent. */
+:root{
+  color-scheme:dark;
+  --bg:#050708; --surface:#0A0F12; --surface2:#0F161A; --raise:#141D22;
+  --ink:#E9EFF0; --muted:#8C9CA2; --dim:#5C6B71; --line:#172125; --line2:#24323A;
+  --accent:#5EEAD4; --accent-ink:#03211C; --accent-soft:rgba(94,234,212,.09);
+  --warn:#F2B562; --ok:#7BE0A4; --glass:rgba(5,7,8,.74); --dot-off:#1B2529; --dot-unk:#3A474C;
+  --nacre:linear-gradient(100deg,#A7F3E4 0%,#BCC8FF 42%,#F4C9E6 76%,#FFE3BF 100%);
+  --hm0:#0F2B2C; --hm1:#127A7C; --hm2:#3FE0CF; --hm3:#F4FFFB;
+  --f-display:"Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --f-body:"Geist", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono:"Geist Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --a-development:#F5B03A; --a-hemocyte:#FF7A45; --a-priming:#E58BC9; --a-gonad:#34D399; --a-ganglia:#4EA8FF; --a-mantle:#7DD3FC;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.fx{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(900px 520px at 85% -8%,rgba(94,234,212,.10),transparent 60%),radial-gradient(800px 600px at -10% 110%,rgba(188,200,255,.07),transparent 60%)}
+.fx::after{content:"";position:absolute;inset:0;opacity:.35;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%);mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%)}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--accent)} a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,canvas:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+::selection{background:rgba(94,234,212,.28)}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--glass);-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--ink);text-decoration:none}
+.brand svg{flex:none}
+.brand b{font:600 16px/1.1 var(--f-body);letter-spacing:-.1px}
+.brand small{display:block;font:500 10.5px/1.3 var(--f-mono);color:var(--dim);letter-spacing:.9px;text-transform:uppercase;margin-top:2px}
+nav{display:flex;flex-wrap:wrap;gap:2px;margin-left:auto}
+nav a{padding:6px 12px;border-radius:999px;text-decoration:none;color:var(--muted);font-size:14px;font-weight:500;transition:color .15s,background .15s}
+nav a:hover{color:var(--ink)}
+nav a[aria-current="page"]{color:var(--ink);background:var(--raise);box-shadow:inset 0 0 0 1px var(--line2)}
+
+/* type */
+h1{font:400 clamp(30px,4.6vw,48px)/1.06 var(--f-display);margin:0;letter-spacing:-.4px;text-wrap:balance}
+h2{font:600 19px/1.3 var(--f-body);margin:0;letter-spacing:-.2px;text-wrap:balance}
+h3{font:500 11px/1.3 var(--f-mono);margin:0;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
+.nacre{background:var(--nacre);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{font:500 11.5px/1.3 var(--f-mono);letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:1px;background:currentColor}
+.muted{color:var(--muted)} .mono{font-family:var(--f-mono);font-size:.92em}
+.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.note{font-size:13.5px;color:var(--muted);margin:0;max-width:78ch}
+main{position:relative;z-index:1}
+section{display:grid;gap:22px;padding-block:30px 10px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:36px;align-items:center;padding-block:44px 18px}
+.hero-text{display:grid;gap:20px;min-width:0}
+.hero h1{font-size:clamp(40px,6.4vw,78px);line-height:.98}
+.hero h1 em{font-style:italic}
+.hero p.lead{margin:0;max-width:52ch;font-size:16.5px;color:var(--muted)}
+.hero p.lead b{color:var(--ink);font-weight:500}
+.mapbox{position:relative;aspect-ratio:1;max-width:100%;border-radius:22px;background:radial-gradient(circle at 50% 45%,#0C1518 0%,var(--surface) 70%);border:1px solid var(--line);overflow:hidden}
+.mapbox canvas{position:absolute;inset:0;width:100%;height:100%;transition:opacity .45s ease;cursor:pointer}
+.maptag{position:absolute;left:18px;bottom:16px;right:18px;display:flex;justify-content:space-between;align-items:end;gap:10px;pointer-events:none}
+.maptag b{display:block;font:400 26px/1.1 var(--f-display)} .maptag span{font:500 11px var(--f-mono);color:var(--muted);letter-spacing:.6px;text-transform:uppercase}
+.dots{display:flex;gap:6px;pointer-events:auto}
+.dots button{width:9px;height:9px;padding:0;border-radius:50%;border:0;background:var(--line2);cursor:pointer}
+.dots button[aria-pressed="true"]{background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.maphint{position:absolute;top:14px;left:18px;font:500 10.5px var(--f-mono);letter-spacing:1px;text-transform:uppercase;color:var(--dim)}
+
+/* search */
+.search{display:flex;gap:8px;position:relative;max-width:640px;padding:6px;border-radius:14px;background:var(--surface2);border:1px solid var(--line2);box-shadow:0 0 0 1px rgba(0,0,0,.4),0 20px 50px -20px rgba(94,234,212,.18)}
+.search:focus-within{border-color:rgba(94,234,212,.5)}
+.search input{flex:1;min-width:0;font:15.5px var(--f-body);padding:10px 12px;border:0;background:transparent;color:var(--ink)}
+.search input:focus{outline:none}
+.search input::placeholder{color:var(--dim)}
+.search.slim{max-width:420px;box-shadow:none}
+button{font:500 13.5px var(--f-body);border:1px solid var(--line2);background:var(--raise);color:var(--ink);border-radius:9px;padding:8px 13px;cursor:pointer;transition:border-color .15s,background .15s}
+button:hover{border-color:var(--dim)}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+button.primary:hover{background:#86F2E2}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{padding:4px 11px;border-radius:999px;font-size:12.5px;background:transparent;color:var(--muted)}
+.chip:hover{color:var(--ink)}
+.sugg{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:30;background:var(--surface2);border:1px solid var(--line2);border-radius:12px;max-height:340px;overflow:auto;box-shadow:0 24px 60px rgba(0,0,0,.6)}
+.sugg button{display:flex;gap:12px;width:100%;text-align:left;border:0;border-radius:0;padding:9px 14px;background:transparent}
+.sugg button:hover,.sugg button.on{background:var(--raise)}
+.kind{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.8px;color:var(--accent);min-width:70px;padding-top:2px}
+
+/* stats band */
+.band{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--line);margin-block:18px 6px}
+.band div{padding:22px 18px;display:grid;gap:4px;border-left:1px solid var(--line)} .band div:first-child{border-left:0;padding-left:0}
+.band b{font:400 clamp(30px,4vw,46px)/1 var(--f-display);font-variant-numeric:tabular-nums}
+.band span{font:500 11px var(--f-mono);letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+
+/* cards */
+.shead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:10px 20px}
+.shead > div{display:grid;gap:8px;min-width:0}
+.atlases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.acard{position:relative;display:grid;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 14px 14px;text-decoration:none;color:var(--ink);transition:border-color .2s,transform .2s}
+.acard:hover{border-color:var(--line2);transform:translateY(-2px)}
+.acard canvas{width:100%;aspect-ratio:1;max-width:100%}
+.acard .k{display:flex;align-items:center;gap:8px;font-weight:600} .acard span{font-size:12.5px;color:var(--muted)}
+.acard .go{position:absolute;top:12px;right:14px;font:500 11px var(--f-mono);color:var(--dim)}
+.acard:hover .go{color:var(--accent)}
+.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.feat{display:grid;gap:10px;align-content:start;padding:22px;border-radius:16px;background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--line);text-decoration:none;color:var(--ink);transition:border-color .2s}
+.feat:hover{border-color:rgba(94,234,212,.4)}
+.feat i{font:500 12px var(--f-mono);font-style:normal;color:var(--accent)}
+.feat b{font:400 26px/1.1 var(--f-display)}
+.feat p{margin:0;font-size:14px;color:var(--muted)}
+.feat code{font:12px var(--f-mono);color:var(--ink);background:var(--raise);padding:2px 6px;border-radius:5px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;min-width:0}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:18px}
+
+/* gene and type pages */
+.crumb{font:500 11.5px var(--f-mono);letter-spacing:.8px;text-transform:uppercase;color:var(--dim)} .crumb a{color:var(--muted);text-decoration:none}
+.verdict{position:relative;font-size:17px;line-height:1.5;padding:16px 20px;border-radius:12px;background:var(--surface2);border:1px solid var(--line2);overflow:hidden}
+.verdict::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--nacre)}
+.verdict b{font-weight:600}
+.gh{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline}
+.ctrls{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ctrls button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px 26px;align-items:start}
+.block{display:grid;gap:2px;min-width:0;align-content:start}
+.block h3{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.sw{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.bar{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) 84px;gap:10px;align-items:center;font-size:12.5px;line-height:1.25;padding:2px 4px;border-radius:5px;text-decoration:none;color:var(--ink)}
+.bar:hover{background:var(--raise)}
+.bar .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted)}
+.bar.top .nm{color:var(--ink);font-weight:600}
+.track{height:8px;background:#0E1619;border-radius:99px;overflow:hidden}
+.fill{display:block;height:100%;border-radius:99px}
+.bar .num{font:11px var(--f-mono);color:var(--dim)}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.thumbs figure{margin:0;display:grid;gap:6px;padding:8px;border-radius:12px;background:var(--surface2);border:1px solid var(--line)}
+.thumbs canvas{width:100%;aspect-ratio:1}
+figcaption{font-size:12.5px;color:var(--muted)}
+.legend{display:flex;align-items:center;gap:8px;font:11px var(--f-mono);color:var(--muted)}
+.legend i{display:inline-block;width:120px;height:7px;border-radius:99px;background:linear-gradient(90deg,var(--hm0),var(--hm1),var(--hm2),var(--hm3))}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.9px;color:var(--dim)}
+tbody tr:hover td{background:rgba(255,255,255,.015)}
+td a{text-decoration:none}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:11.5px;background:var(--raise);border:1px solid var(--line2);color:var(--muted);white-space:nowrap}
+.pill.ok{color:var(--ok)} .pill.warn{color:var(--warn)}
+textarea{width:100%;min-height:170px;font:13px/1.5 var(--f-mono);padding:12px;border:1px solid var(--line2);border-radius:12px;background:var(--surface2);color:var(--ink);resize:vertical}
+.pbar{height:6px;background:var(--accent);border-radius:99px;display:block;margin-bottom:3px}
+.stats{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:14px;color:var(--muted)} .stats b{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.typegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px 18px}
+.typegrid a{display:flex;justify-content:space-between;gap:10px;text-decoration:none;color:var(--ink);padding:5px 8px;border-radius:6px;font-size:13.5px}
+.typegrid a:hover{background:var(--raise)}
+.dsn{color:var(--dim);margin-left:8px;font-size:12px}
+
+footer{position:relative;z-index:1;margin-top:60px;border-top:1px solid var(--line)}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:24px;padding-block:30px 40px;font-size:13px;color:var(--muted)}
+footer b{display:block;color:var(--ink);font-weight:500;margin-bottom:6px}
+footer p{margin:0}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:3px}
+
+@media (max-width:900px){ .hero{grid-template-columns:1fr} .mapbox{max-width:520px} .features{grid-template-columns:1fr} }
+@media (max-width:760px){ .two{grid-template-columns:1fr} nav{margin-left:0} .bar{grid-template-columns:minmax(0,1.3fr) minmax(0,.8fr) 74px}
+  .band{grid-template-columns:repeat(2,minmax(0,1fr))} .band div:nth-child(3){border-left:0;padding-left:0} .band div:nth-child(n+3){border-top:1px solid var(--line)}
+  .atlases{grid-template-columns:repeat(2,minmax(0,1fr))} footer .wrap{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:no-preference){ .fill,.pbar{transition:width .3s ease} }
+@media (prefers-reduced-motion:reduce){ .mapbox canvas,.acard{transition:none} }
+</style>
+</head>
+<body>
+<div class="fx" aria-hidden="true"></div>
+<header><div class="wrap">
+  <a class="brand" href="../" aria-label="Gigas Cell Atlas project page">
+    <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="ng" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A7F3E4"/><stop offset=".5" stop-color="#BCC8FF"/><stop offset="1" stop-color="#F4C9E6"/></linearGradient></defs>
+      <path d="M16 3c7 2 12 8 12 15 0 6-5 11-12 11S4 24 4 18C4 11 9 5 16 3z" fill="none" stroke="url(#ng)" stroke-width="1.6"/>
+      <path d="M16 8c4 1.6 7 5.4 7 10 0 3.6-3 6.5-7 6.5S9 21.6 9 18c0-4.6 3-8.4 7-10z" fill="none" stroke="url(#ng)" stroke-width="1.2" opacity=".7"/>
+      <circle cx="16" cy="18" r="2.6" fill="url(#ng)"/></svg>
+    <span><b>Gigas Cell Atlas</b><small>Crassostrea gigas</small></span></a>
+  <nav id="nav"><a href="#home">Search</a><a href="#types">Cell types</a><a href="#list">Gene list</a><a href="#convert">ID converter</a><a href="../families.html">Families</a><a href="../">About</a></nav>
+</div></header>
+
+<main class="wrap">
+<!-- HOME -->
+<section id="v-home">
+  <div class="hero">
+    <div class="hero-text">
+      <div class="eyebrow">Pacific oyster single-cell reference</div>
+      <h1>Every oyster cell type, <em class="nacre">on one genome.</em></h1>
+      <p class="lead" id="intro"></p>
+      <div class="search">
+        <input id="q" type="search" autocomplete="off" placeholder="Gene ID, Roslin ID, protein name or cell type" aria-label="Search genes and cell types">
+        <button id="qgo" class="primary">Search</button>
+        <div id="sugg" class="sugg" hidden></div>
+      </div>
+      <div class="chips" id="ex"><span class="muted" style="font-size:12.5px;margin-right:4px">Try</span></div>
+    </div>
+    <div class="mapbox"><span class="maphint">Cell map</span><canvas id="hcv" tabindex="0" aria-label="Cell map of the selected atlas; press Enter to list its cell types"></canvas>
+      <div class="maptag"><div><span id="hsub"></span><b id="hname"></b></div><div class="dots" id="hdots"></div></div></div>
+  </div>
+  <div class="band" id="band"></div>
+
+  <div class="shead"><div><div class="eyebrow">Atlases</div><h1 style="font-size:clamp(28px,3.6vw,40px)">Six tissues and life stages</h1></div>
+    <p class="note" style="max-width:52ch">Each atlas was rebuilt from the raw reads with one pipeline on the current genome, xbMagGiga1.1. Open one to see its cell types.</p></div>
+  <div class="atlases" id="atl"></div>
+
+  <div class="shead" style="margin-top:22px"><div><div class="eyebrow">Tools</div><h1 style="font-size:clamp(28px,3.6vw,40px)">Three ways to use it</h1></div></div>
+  <div class="features" id="feat"></div>
+  <div class="panel two"><div style="display:grid;gap:8px;align-content:start"><h3>How to read the numbers</h3></div>
+    <p class="note">Bars show the mean expression of a cell type in counts per 10,000 (CP10k), and the share of its cells with at least one count. Compare cell types inside one tissue first: whole cells and nuclei, and different labs, give different absolute levels.</p></div>
+</section>
+
+<section id="v-gene" hidden></section>
+<section id="v-type" hidden></section>
+<section id="v-types" hidden>
+  <div style="display:grid;gap:10px"><div class="eyebrow">Browse</div><h1>Cell types</h1><p class="note">209 cell types in 8 datasets. Names follow lineage, then type; the authors' original name is kept where it exists.</p></div>
+  <div class="search slim"><input id="tf" type="search" placeholder="Filter cell types" aria-label="Filter cell types"></div>
+  <div id="tlist" style="display:grid;gap:16px"></div>
+</section>
+<section id="v-list" hidden>
+  <div style="display:grid;gap:10px"><div class="eyebrow">Gene list</div><h1>Which cell types does my gene list point to?</h1>
+  <p class="note">Paste genes (current IDs, Roslin IDs or LOC numbers), one per line. Each cell type's 100 most specific genes are tested for overlap (hypergeometric test, Benjamini-Hochberg q).</p></div>
+  <div class="two">
+    <div style="display:grid;gap:10px;align-content:start">
+      <textarea id="lq" aria-label="Gene list"></textarea>
+      <div class="ctrls"><button id="lgo" class="primary">Find cell types</button><button id="lex">Load example</button><button id="lclr">Clear</button></div>
+      <p class="note" id="lexnote"></p>
+    </div>
+    <div class="panel" style="display:grid;gap:10px;min-width:0;align-content:start"><p class="note" id="linfo"></p><div class="tbl" id="lout"></div></div>
+  </div>
+</section>
+<section id="v-convert" hidden>
+  <div style="display:grid;gap:10px"><div class="eyebrow">Converter</div><h1>Old gene IDs to current IDs</h1>
+  <p class="note">Roslin v1 Ensembl IDs (G#####) are matched by reciprocal best protein hit (1:1 only). Roslin v1 RefSeq IDs (LOC#### or GeneID) use NCBI's own annotation comparison table (RS_2024_06), which also flags split, merged and changed genes.</p></div>
+  <div class="two">
+    <div style="display:grid;gap:10px;align-content:start"><textarea id="cq" aria-label="IDs to convert"></textarea>
+      <div class="ctrls"><button id="cgo" class="primary">Convert</button><button id="ccopy">Copy table</button></div></div>
+    <div class="panel tbl" id="cout"></div>
+  </div>
+</section>
+<section id="v-cite" hidden></section>
+</main>
+
+<footer><div class="wrap">
+  <div><b>Gigas Cell Atlas</b><p id="fver"></p><p style="margin-top:8px">Preview release. Manuscript in preparation; numbers may change before publication.</p></div>
+  <div><b>Explore</b><ul><li><a href="#types">All cell types</a></li><li><a href="#list">Gene list test</a></li><li><a href="#convert">ID converter</a></li><li><a href="#cite">Data and cite</a></li><li><a href="../families.html">Cell-type families</a></li><li><a href="../">Project page</a></li></ul></div>
+  <div><b>Built from</b><p>8 public studies: Gavery 2025, Piovani 2023, de La Forest Divonne 2025, Wang 2024 and 2025, Yang 2026, Bai 2026, and PRJNA1236035.</p></div>
+</div></footer>
+
+<script src="portal_data.js"></script>
+<script>
+(function(){
+const D = window.PORTAL;
+const VER = "v5, 2026-11-12 (atlas v4 cells, Seurat)";
+D.labels.forEach(L => { if (/^nan$/i.test(L.name)) { L.name = "Unnamed by authors"; L.full = "Unnamed by authors"; } });
+const dec = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+const MEAN = dec(D.mean), FRAC = dec(D.frac), nL = D.nL, nG = D.nG, FW = Math.ceil(nL / 2);
+const SIM = new Uint16Array(dec(D.similar).buffer);
+const mean = (g, l) => Math.pow(2, MEAN[g * nL + l] / 20) - 1;
+const frac = (g, l) => { const b = FRAC[g * FW + (l >> 1)]; return ((l & 1) ? (b & 15) : (b >> 4)) / 15; };
+const GI = new Map(D.genes.map((g, i) => [g, i]));
+const DSN = {early_embryo:"Cleavage / blastula", gastrula:"Gastrula", trochophore:"Trochophore larva", hemocyte:"Hemocytes", priming:"Hemocyte priming", gonad:"Gonad", ganglia:"Ganglia", mantle:"Mantle"};
+const DS2B = {early_embryo:"development", gastrula:"development", trochophore:"development", hemocyte:"hemocyte", priming:"priming", gonad:"gonad", ganglia:"ganglia", mantle:"mantle"};
+const BN = {development:"Development", hemocyte:"Hemocytes", priming:"Hemocyte priming", gonad:"Gonad", ganglia:"Ganglia", mantle:"Mantle"};
+const BSUB = {development:"embryo + larva", hemocyte:"blood, whole cells", priming:"blood, primed", gonad:"nuclei", ganglia:"nuclei", mantle:"whole cells"};
+const BINFO = {development:"embryo (cleavage to gastrula) and trochophore larva; authors' cell names", hemocyte:"circulating blood cells of one healthy oyster", priming:"blood cells, untreated and 12 h / 7 d after priming",
+  gonad:"female, male, diploid and triploid gonads (nuclei)", ganglia:"cerebral and visceral ganglia (nuclei)", mantle:"mantle tissue, shell-forming edge"};
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = n => n.toLocaleString("en-US");
+const f1 = v => v >= 100 ? v.toFixed(0) : v >= 10 ? v.toFixed(1) : v.toFixed(2);
+const acol = l => css("--a-" + DS2B[D.labels[l].ds]);
+const DSORD = Object.keys(DSN);
+const blocks = {}; D.labels.forEach((L, l) => (blocks[L.ds] = blocks[L.ds] || []).push(l));
+const RM = matchMedia("(prefers-reduced-motion: reduce)");
+
+const ENSREV = {}; for (const k in D.ens) { const t = D.ens[k][0]; (ENSREV[t] = ENSREV[t] || []).push(k); }
+const PREVREV = {}; for (const k in D.prev) D.prev[k].forEach(x => { if (x[1]) (PREVREV[x[1]] = PREVREV[x[1]] || []).push("LOC" + k); });
+
+document.getElementById("intro").innerHTML = `<b>${fmt(D.n_cells_total)} cells</b> from 8 public studies, reprocessed on the current genome and named the same way. Type a gene to see which cells use it, or paste a gene list from your bulk RNA-seq.`;
+document.getElementById("fver").textContent = `${VER}. Genome ${D.genome}.`;
+document.getElementById("band").innerHTML = [[fmt(D.n_cells_total), "cells"], [nL, "cell types"], [fmt(nG), "genes"], ["6", "tissues and stages"]].map(([v, k]) => `<div><b>${v}</b><span>${k}</span></div>`).join("");
+
+// ---------------- search
+function geneHits(q, lim){
+  q = q.trim(); if (!q) return [];
+  if (GI.has(q)) return [GI.get(q)];
+  const Q = q.toUpperCase();
+  if (/^G\d+$/.test(Q) && D.ens[Q]) { const t = D.ens[Q][0]; if (GI.has(t)) return [GI.get(t)]; }
+  const pid = q.replace(/^LOC/i, ""); if (/^\d+$/.test(pid) && D.prev[pid]) { const o = D.prev[pid].map(x => x[1]).filter(s => GI.has(s)).map(s => GI.get(s)); if (o.length) return o; }
+  const lq = q.toLowerCase(), a = [], b = [];
+  for (let i = 0; i < nG && a.length + b.length < lim * 3; i++) { const g = D.genes[i].toLowerCase(), p = D.product[i].toLowerCase();
+    if (g.startsWith(lq)) a.push(i); else if (p.includes(lq)) b.push(i); }
+  return a.concat(b).slice(0, lim);
+}
+function typeHits(q, lim){ const lq = q.trim().toLowerCase(); if (lq.length < 3) return [];
+  return D.labels.map((L, l) => [L, l]).filter(([L]) => (L.full + " " + L.author).toLowerCase().includes(lq)).slice(0, lim).map(x => x[1]); }
+const qi = document.getElementById("q"), sg = document.getElementById("sugg"); let sel = -1;
+function suggest(){ const q = qi.value; const gs = geneHits(q, 8), ts = typeHits(q, 5);
+  if (!q.trim() || (!gs.length && !ts.length)) { sg.hidden = true; return; }
+  sg.innerHTML = ts.map(l => `<button data-h="t.${l}"><span class="kind">cell type</span><span>${esc(D.labels[l].name)}<span class="dsn">${DSN[D.labels[l].ds]}</span></span></button>`).join("") +
+    gs.map(i => `<button data-h="g.${esc(D.genes[i])}"><span class="kind">gene</span><span><span class="mono">${esc(D.genes[i])}</span> <span class="muted">${esc(D.product[i].slice(0, 70))}</span></span></button>`).join("");
+  sg.hidden = false; sel = -1;
+  sg.querySelectorAll("button").forEach(b => b.onmousedown = e => { e.preventDefault(); go(b.dataset.h); }); }
+qi.addEventListener("input", suggest);
+qi.addEventListener("keydown", e => { const bs = [...sg.querySelectorAll("button")];
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); if (!bs.length) return; sel = (sel + (e.key === "ArrowDown" ? 1 : -1) + bs.length) % bs.length; bs.forEach((b, i) => b.classList.toggle("on", i === sel)); }
+  else if (e.key === "Enter") { if (sel >= 0 && bs[sel]) go(bs[sel].dataset.h); else runSearch(); }
+  else if (e.key === "Escape") sg.hidden = true; });
+qi.addEventListener("blur", () => setTimeout(() => sg.hidden = true, 150));
+document.getElementById("qgo").onclick = runSearch;
+function runSearch(){ const q = qi.value; const ts = typeHits(q, 1), gs = geneHits(q, 30);
+  if (gs.length === 1) return go("g." + D.genes[gs[0]]);
+  if (!gs.length && ts.length) return go("t." + ts[0]);
+  if (gs.length) { suggest(); return; }
+  sg.innerHTML = `<p class="note" style="padding:12px 14px">Nothing matched. Try an ID such as LOC105347058, a Roslin ID such as G5032, or a word such as tyrosinase.</p>`; sg.hidden = false; }
+const EX = [["gigasin-6", "shell matrix"], ["tyrosinase", "shell pigment"], ["synaptonemal complex protein 1", "meiosis"], ["ceruloplasmin", "blood cells"], ["myosin heavy chain, striated", "muscle"]];
+document.getElementById("ex").insertAdjacentHTML("beforeend", EX.map(([q, w]) => `<button class="chip" data-q="${esc(q)}" title="${esc(w)}">${esc(q)}</button>`).join(""));
+document.querySelectorAll("#ex .chip").forEach(b => b.onclick = () => { const h = geneHits(b.dataset.q, 1); if (h.length) go("g." + D.genes[h[0]]); });
+
+// ---------------- UMAP drawing (two passes: additive halo, then sharp core, so dense clusters glow)
+const UM = {}; for (const b in D.umap) UM[b] = { xy: new Uint16Array(dec(D.umap[b].xy).buffer), lab: dec(D.umap[b].lab), n: D.umap[b].n };
+function hex2rgb(h){ h = h.replace("#", ""); if (h.length === 3) h = h.split("").map(c => c + c).join(""); return [0, 2, 4].map(i => parseInt(h.substr(i, 2), 16)); }
+function ramp(t){ const st = ["--hm0", "--hm1", "--hm2", "--hm3"].map(v => hex2rgb(css(v))); t = Math.max(0, Math.min(1, t)) * 3; const i = Math.min(2, Math.floor(t)), f = t - i;
+  return `rgb(${st[i].map((v, k) => Math.round(v + (st[i + 1][k] - v) * f)).join(",")})`; }
+const PAL = ["#4EA8FF","#FF9F43","#34D399","#FF6B6B","#A78BFA","#C08457","#F472B6","#94A3B8","#D9E35B","#22D3EE","#93C5FD","#FDBA74","#86EFAC","#FCA5A5","#C4B5FD","#E7B98F","#F9A8D4","#E5E58A","#99F6E4","#6366F1","#84CC16","#EAB308","#EF4444","#D946EF","#3B82F6","#F97316"];
+const LABCOL = {}; { const cnt = {}, unk = css("--dot-unk"); D.labels.forEach((L, l) => { const k = DS2B[L.ds]; cnt[k] = cnt[k] || 0; LABCOL[l] = /nresolved|^nan$|^Unk|Unnamed/.test(L.name) ? unk : PAL[cnt[k]++ % PAL.length]; }); }
+function drawUmap(c, b, mode, arg){
+  const dpr = Math.min(2, window.devicePixelRatio || 1), Wc = c.clientWidth || 200; c.width = c.height = Math.round(Wc * dpr);
+  const ctx = c.getContext("2d"), W = c.width, H = c.height, u = UM[b], pad = W * 0.06, s = (W - 2 * pad) / 1000;
+  ctx.clearRect(0, 0, W, H);
+  const r = Math.max(0.8 * dpr, W / 330), idx = [...Array(u.n).keys()], off = css("--dot-off");
+  let colf, lit;
+  if (mode === "gene") { const gi = arg; let mx = 0; const lv = {}; for (let i = 0; i < u.n; i++) { const l = u.lab[i]; if (!(l in lv)) { lv[l] = mean(gi, l); mx = Math.max(mx, lv[l]); } }
+    const lm = Math.log2(1 + mx) || 1; const v = i => Math.log2(1 + lv[u.lab[i]]) / lm; idx.sort((a, bb) => v(a) - v(bb));
+    lit = i => v(i) >= 0.03; colf = i => lit(i) ? ramp(0.12 + 0.88 * v(i)) : off; }
+  else if (mode === "hi") { const ac = css("--accent"); idx.sort((a, bb) => (u.lab[a] === arg) - (u.lab[bb] === arg)); lit = i => u.lab[i] === arg; colf = i => lit(i) ? ac : off; }
+  else { lit = () => true; colf = i => LABCOL[u.lab[i]]; }
+  const X = i => pad + u.xy[2 * i] * s, Y = i => H - pad - u.xy[2 * i + 1] * s;
+  ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = mode === "type" ? 0.05 : 0.08;
+  for (const i of idx) { if (!lit(i)) continue; ctx.fillStyle = colf(i); ctx.beginPath(); ctx.arc(X(i), Y(i), r * 3.4, 0, 6.283); ctx.fill(); }
+  ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 0.92;
+  for (const i of idx) { ctx.fillStyle = colf(i); ctx.beginPath(); ctx.arc(X(i), Y(i), r, 0, 6.283); ctx.fill(); }
+  ctx.globalAlpha = 1;
+}
+
+// ---------------- home: hero map, atlas cards, tools
+const HB = Object.keys(BN); let hIdx = 0, hTimer = null;
+const hcv = document.getElementById("hcv");
+const bcount = b => { const ls = D.labels.filter(L => DS2B[L.ds] === b); return [ls.reduce((s, L) => s + L.n, 0), ls.length]; };
+document.getElementById("hdots").innerHTML = HB.map((b, i) => `<button data-i="${i}" aria-label="Show ${BN[b]}"></button>`).join("");
+document.querySelectorAll("#hdots button").forEach(bt => bt.onclick = () => { hIdx = +bt.dataset.i; drawHero(); startHero(); });
+function drawHero(){ const b = HB[hIdx], [n, k] = bcount(b); drawUmap(hcv, b, "type");
+  document.getElementById("hname").textContent = BN[b]; document.getElementById("hsub").textContent = `${fmt(n)} cells, ${k} types, ${BSUB[b]}`;
+  document.querySelectorAll("#hdots button").forEach((bt, i) => bt.setAttribute("aria-pressed", i === hIdx)); }
+function startHero(){ clearInterval(hTimer); if (RM.matches) return;
+  hTimer = setInterval(() => { if (document.getElementById("v-home").hidden || document.hidden) return; hcv.style.opacity = 0;
+    setTimeout(() => { hIdx = (hIdx + 1) % HB.length; drawHero(); hcv.style.opacity = 1; }, 450); }, 6500); }
+hcv.onclick = () => go("types." + HB[hIdx]);
+hcv.onkeydown = e => { if (e.key === "Enter") go("types." + HB[hIdx]); };
+
+document.getElementById("atl").innerHTML = HB.map(b => { const [n, k] = bcount(b);
+  return `<a class="acard" href="#types.${b}"><span class="go">open</span><canvas data-b="${b}" aria-label="${BN[b]} map"></canvas><span class="k" style="color:var(--ink);font-size:15px"><span class="sw" style="background:var(--a-${b});box-shadow:0 0 8px var(--a-${b})"></span>${BN[b]}</span><span>${fmt(n)} cells, ${k} cell types, ${BSUB[b]}</span></a>`; }).join("");
+function drawCards(){ document.querySelectorAll("#atl canvas").forEach(c => drawUmap(c, c.dataset.b, "type")); }
+{ const g6 = geneHits("gigasin-6", 1)[0];
+  document.getElementById("feat").innerHTML = [
+    [g6 != null ? "#g." + D.genes[g6] : "#home", "01", "Look up one gene", `See its level in all ${nL} cell types with a one-line verdict. Example: <code>gigasin-6</code> sits in the shell-forming mantle epithelium.`],
+    ["#list", "02", "Read a gene list", "Paste DE genes from bulk RNA-seq. The cell types they come from rise to the top. Example: sorted granulocyte genes point to vesicular cells in five tissues."],
+    ["#convert", "03", "Convert old IDs", "Roslin v1 gene IDs from older papers become current IDs. Example: <code>G11998</code> becomes <code>LOC105343850</code>."]]
+    .map(([h, i, t, p]) => `<a class="feat" href="${h}"><i>${i}</i><b>${t}</b><p>${p}</p></a>`).join(""); }
+
+// ---------------- gene page
+let barMode = "top", barScale = "linear";
+function verdictText(gi){ const v = D.verdict[gi], cat = D.verdict_cats[v[0]], ls = v.slice(1);
+  const nm = l => `<a href="#t.${l}">${esc(D.labels[l].name)}</a> <span class="muted">(${DSN[D.labels[l].ds]})</span>`;
+  if (cat === "not detected") return `<b>Not detected</b>: below 1 CP10k in every cell type.`;
+  if (cat === "enriched") return `<b>Enriched</b> in ${nm(ls[0])}: at least 4 times higher than in any other cell type.`;
+  if (cat === "group enriched") return `<b>Group enriched</b> in ${ls.length} cell types: ${ls.map(nm).join(", ")}.`;
+  if (cat === "enhanced") return `<b>Enhanced</b> in ${ls.map(nm).join(", ")}: at least 4 times the average of all cell types.`;
+  return `<b>Low cell-type specificity</b>: expressed in many cell types at similar levels.`; }
+function geneView(gi){
+  const g = D.genes[gi], p = D.product[gi] || "no product name";
+  let best = 0; for (let l = 0; l < nL; l++) best = Math.max(best, mean(gi, l));
+  const al = [...(ENSREV[g] || []), ...(PREVREV[g] || [])].filter(x => x !== g);
+  const el = document.getElementById("v-gene");
+  el.innerHTML = `<div style="display:grid;gap:12px">
+      <div class="crumb"><a href="#home">Search</a> / gene</div>
+      <div class="gh"><h1 style="font-family:var(--f-mono);font-size:clamp(24px,3.6vw,36px);letter-spacing:-.5px">${esc(g)}</h1><span style="font:400 24px/1.2 var(--f-display)" class="nacre">${esc(p)}</span></div>
+      <div class="stats"><span>Old IDs: <span class="mono" style="color:var(--ink)">${al.length ? esc(al.slice(0, 6).join(", ")) : "none found"}</span></span>
+        <a href="https://www.ncbi.nlm.nih.gov/gene/?term=${encodeURIComponent(g)}+Magallana+gigas" target="_blank" rel="noopener">NCBI Gene</a>
+        <a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi" target="_blank" rel="noopener">NCBI BLAST</a></div>
+      <div class="verdict">${verdictText(gi)}</div></div>
+    <div class="panel" style="display:grid;gap:14px">
+      <div class="ctrls" style="justify-content:space-between"><h2>Expression in all ${nL} cell types</h2>
+        <div class="ctrls"><button data-m="top" aria-pressed="${barMode === "top"}">Top 25</button><button data-m="tissue" aria-pressed="${barMode === "tissue"}">By tissue</button>
+        <span class="muted" style="margin-left:8px;font-size:12.5px">Scale</span><button data-s="linear" aria-pressed="${barScale === "linear"}">Linear</button><button data-s="log" aria-pressed="${barScale === "log"}">Log</button>
+        <button id="gcopy">Copy values</button></div></div>
+      <p class="note">Bar = mean CP10k of the cell type; numbers = mean CP10k / % of cells with at least one count. Highest: ${f1(best)} CP10k.</p>
+      <div id="gbars"></div></div>
+    <div class="panel" style="display:grid;gap:12px"><div class="ctrls" style="justify-content:space-between"><h2>Where in each atlas</h2><span class="legend">low <i></i> high, within each atlas</span></div>
+      <div class="thumbs" id="gth"></div><p class="note">Each dot is a sampled cell, coloured by the average of its cell type.</p></div>
+    <div class="panel" style="display:grid;gap:10px"><h2>Genes with a similar pattern</h2><div class="tbl" id="gsim"></div>
+      <p class="note">Pearson correlation of log mean expression across the ${nL} cell types.</p></div>`;
+  el.querySelectorAll("[data-m]").forEach(b => b.onclick = () => { barMode = b.dataset.m; geneView(gi); });
+  el.querySelectorAll("[data-s]").forEach(b => b.onclick = () => { barScale = b.dataset.s; geneView(gi); });
+  const wv = v => barScale === "log" ? Math.log2(1 + v) / (Math.log2(1 + best) || 1) * 100 : v / (best || 1) * 100;
+  const topSet = new Set(D.verdict[gi].slice(1));
+  const row = (l, dot) => { const v = mean(gi, l), c = acol(l); return `<a class="bar${topSet.has(l) ? " top" : ""}" href="#t.${l}" title="${esc(D.labels[l].full)} (${fmt(D.labels[l].n)} cells)"><span class="nm">${dot ? `<span class="sw" style="background:${c};margin-right:7px"></span>` : ""}${esc(D.labels[l].name)}</span><span class="track"><span class="fill" style="width:${wv(v).toFixed(1)}%;background:${c};box-shadow:0 0 10px ${c}"></span></span><span class="num">${f1(v)} / ${Math.round(frac(gi, l) * 100)}%</span></a>`; };
+  const gb = document.getElementById("gbars");
+  if (barMode === "top") { const ls = [...Array(nL).keys()].sort((a, b) => mean(gi, b) - mean(gi, a)).slice(0, 25);
+    gb.innerHTML = `<div class="block">${ls.map(l => row(l, true)).join("")}</div>`; }
+  else gb.innerHTML = `<div class="blocks">` + DSORD.filter(d => blocks[d]).map(d => `<div class="block"><h3><span class="sw" style="background:${css("--a-" + DS2B[d])}"></span>${DSN[d]}</h3>${blocks[d].map(l => row(l, false)).join("")}</div>`).join("") + `</div>`;
+  document.getElementById("gth").innerHTML = HB.map(b => `<figure><canvas data-b="${b}"></canvas><figcaption>${BN[b]}</figcaption></figure>`).join("");
+  document.querySelectorAll("#gth canvas").forEach(c => drawUmap(c, c.dataset.b, "gene", gi));
+  const sims = [...SIM.slice(gi * 10, gi * 10 + 10)];
+  document.getElementById("gsim").innerHTML = `<table><thead><tr><th>Gene</th><th>Product</th><th>Verdict</th></tr></thead><tbody>` +
+    sims.map(s => `<tr><td class="mono"><a href="#g.${esc(D.genes[s])}">${esc(D.genes[s])}</a></td><td>${esc(D.product[s] || "")}</td><td><span class="pill">${D.verdict_cats[D.verdict[s][0]]}</span></td></tr>`).join("") + `</tbody></table>`;
+  document.getElementById("gcopy").onclick = e => copyText(e.target, "cell_type\tdataset\tmean_cp10k\tpct_cells\n" + [...Array(nL).keys()].map(l => `${D.labels[l].full}\t${D.labels[l].ds}\t${f1(mean(gi, l))}\t${Math.round(frac(gi, l) * 100)}`).join("\n"));
+}
+
+// ---------------- cell type page
+function typeView(l){
+  const L = D.labels[l], b = DS2B[L.ds], S = D.spec[l] || [];
+  const fam = L.fam >= 0 ? (D.families.find(f => f.id === L.fam) || {labels: []}).labels.filter(x => x !== l) : [];
+  const el = document.getElementById("v-type");
+  el.innerHTML = `<div style="display:grid;gap:12px"><div class="crumb"><a href="#types">Cell types</a> / <a href="#types.${b}">${BN[b]}</a></div>
+      <h3 style="display:flex;align-items:center"><span class="sw" style="background:${acol(l)};box-shadow:0 0 8px ${acol(l)};margin-right:8px"></span>${DSN[L.ds]}</h3><h1>${esc(L.full)}</h1>
+      <div class="stats"><span><b>${fmt(L.n)}</b> cells</span><span>lineage <b>${esc(L.lin)}</b></span><span>name confidence <b>${esc(L.conf)}</b></span>${L.author ? `<span>authors' name <b>${esc(L.author)}</b></span>` : ""}</div></div>
+    <div class="two"><div class="panel" style="display:grid;gap:8px;align-content:start"><canvas id="tcv" style="width:100%;aspect-ratio:1;max-width:100%"></canvas><figcaption>${BN[b]} atlas; this cell type lit.</figcaption></div>
+      <div class="panel" style="display:grid;gap:10px;min-width:0"><div class="ctrls" style="justify-content:space-between"><h2>Most specific genes</h2><button id="tcopy">Copy gene list</button></div>
+        <p class="note">Ranked by how much higher they are here than in the rest of the ${DSN[L.ds].toLowerCase()} data (detected in at least 20% of these cells).</p>
+        <div class="tbl"><table><thead><tr><th>#</th><th>Gene</th><th>Product</th><th class="num">CP10k</th><th class="num">% cells</th></tr></thead><tbody>${S.slice(0, 25).map((g, i) => `<tr><td class="num muted">${i + 1}</td><td class="mono"><a href="#g.${esc(D.genes[g])}">${esc(D.genes[g])}</a></td><td>${esc(D.product[g] || "")}</td><td class="num">${f1(mean(g, l))}</td><td class="num">${Math.round(frac(g, l) * 100)}</td></tr>`).join("")}</tbody></table></div></div></div>
+    <div class="panel" style="display:grid;gap:10px"><h2>The same cell type in other datasets</h2>${fam.length ? `<p class="note">Matched by the cross-dataset cell-type test (MetaNeighbor R: AUROC at least 0.9, reciprocal top hits, stable in 6 of 9 re-runs).</p>
+      <div class="typegrid">${fam.map(x => `<a href="#t.${x}"><span><span class="sw" style="background:${acol(x)};margin-right:7px"></span>${esc(D.labels[x].name)}</span><span class="muted">${DSN[D.labels[x].ds]}</span></a>`).join("")}</div>` : `<p class="note">No robust match in another dataset.</p>`}</div>`;
+  drawUmap(document.getElementById("tcv"), b, "hi", l);
+  document.getElementById("tcopy").onclick = e => copyText(e.target, S.map(g => D.genes[g]).join("\n"));
+}
+
+// ---------------- types list
+function typesView(focus){
+  const f = document.getElementById("tf").value.trim().toLowerCase();
+  document.getElementById("tlist").innerHTML = HB.map(b => { const ls = D.labels.map((L, l) => [L, l]).filter(([L]) => DS2B[L.ds] === b && (!f || (L.full + L.author).toLowerCase().includes(f))).sort((a, c) => c[0].n - a[0].n);
+    if (!ls.length) return ""; return `<div class="panel" id="tb-${b}" style="display:grid;gap:10px;scroll-margin-top:90px"><h2 style="display:flex;align-items:center"><span class="sw" style="background:var(--a-${b});box-shadow:0 0 8px var(--a-${b});margin-right:10px"></span>${BN[b]}</h2><p class="note">${BINFO[b]}</p>
+      <div class="typegrid">${ls.map(([L, l]) => `<a href="#t.${l}"><span>${esc(L.name)}${b === "development" ? `<span class="dsn">${DSN[L.ds]}</span>` : ""}</span><span class="muted num mono">${fmt(L.n)}</span></a>`).join("")}</div></div>`; }).join("");
+  if (focus) { const t = document.getElementById("tb-" + focus); if (t) t.scrollIntoView({block: "start"}); }
+}
+document.getElementById("tf").addEventListener("input", () => typesView());
+
+// ---------------- gene list
+const LF = new Float64Array(nG + 2); for (let i = 2; i < LF.length; i++) LF[i] = LF[i - 1] + Math.log(i);
+const lC = (n, k) => LF[n] - LF[k] - LF[n - k];
+function hyperUpper(k, K, n, N){ let p = 0; for (let x = k; x <= Math.min(K, n); x++) p += Math.exp(lC(K, x) + lC(N - K, n - x) - lC(N, n)); return Math.min(1, p); }
+function runList(){ const toks = document.getElementById("lq").value.split(/[\s,;]+/).filter(Boolean); const ids = new Set(), miss = [];
+  toks.forEach(t => { let r = []; if (GI.has(t)) r = [GI.get(t)]; else if (/^G\d+$/i.test(t) || /^(LOC)?\d+$/i.test(t)) r = geneHits(t, 1); if (r.length) r.forEach(i => ids.add(i)); else miss.push(t); });
+  const n = ids.size, N = nG; document.getElementById("linfo").innerHTML = `<b style="color:var(--ink)">${n}</b> of ${toks.length} genes recognised${miss.length ? `; not found: <span class="mono">${esc(miss.slice(0, 8).join(", "))}${miss.length > 8 ? " ..." : ""}</span>` : ""}.`;
+  if (!n) { document.getElementById("lout").innerHTML = ""; return; }
+  const rows = []; for (const l in D.spec) { const S = D.spec[l]; let k = 0; const hit = []; S.forEach(g => { if (ids.has(g)) { k++; if (hit.length < 5) hit.push(D.genes[g]); } });
+    if (k) rows.push({ l: +l, k, K: S.length, p: hyperUpper(k, S.length, n, N), hit }); }
+  rows.sort((a, b) => a.p - b.p); const m = Object.keys(D.spec).length;
+  rows.forEach((r, i) => r.q = Math.min(1, r.p * m / (i + 1))); for (let i = rows.length - 2; i >= 0; i--) rows[i].q = Math.min(rows[i].q, rows[i + 1].q);
+  const top = rows.slice(0, 15), mx = Math.max(...top.map(r => -Math.log10(Math.max(r.q, 1e-300))), 1);
+  document.getElementById("lout").innerHTML = `<table><thead><tr><th>Cell type</th><th>Dataset</th><th class="num">Overlap</th><th>-log10 q</th><th>Genes</th></tr></thead><tbody>` +
+    top.map(r => { const s = -Math.log10(Math.max(r.q, 1e-300)), c = r.q < 0.05 ? acol(r.l) : "var(--line2)"; return `<tr><td><a href="#t.${r.l}">${esc(D.labels[r.l].name)}</a></td><td class="muted">${DSN[D.labels[r.l].ds]}</td><td class="num">${r.k} / ${r.K}</td>
+      <td style="min-width:110px"><span class="pbar" style="width:${(s / mx * 100).toFixed(0)}%;background:${c};box-shadow:0 0 8px ${c}"></span><span class="muted mono" style="font-size:11px">${s.toFixed(1)}</span></td><td class="mono" style="font-size:11.5px;color:var(--muted)">${esc(r.hit.join(", "))}</td></tr>`; }).join("") +
+    `</tbody></table><p class="note" style="margin-top:10px">Coloured bar = q below 0.05. Universe: ${fmt(N)} genes. Only cell types present in the atlas can be found; gill and digestive gland have no single-cell data yet.</p>`; }
+document.getElementById("lgo").onclick = runList;
+document.getElementById("lclr").onclick = () => { document.getElementById("lq").value = ""; document.getElementById("lout").innerHTML = ""; document.getElementById("linfo").textContent = ""; document.getElementById("lexnote").textContent = ""; };
+function loadExample(){ const E = D.examples.gran_mao2020; document.getElementById("lq").value = E.genes.join("\n"); document.getElementById("lexnote").textContent = "Example loaded: " + E.title + "."; runList(); }
+document.getElementById("lex").onclick = loadExample;
+
+// ---------------- converter
+let convRows = [];
+function runConv(){ const toks = document.getElementById("cq").value.split(/[\s,;]+/).filter(Boolean); convRows = [];
+  toks.forEach(t => { if (/^G\d+$/i.test(t)) { const e = D.ens[t.toUpperCase()]; convRows.push([t, "Roslin v1 Ensembl", e ? e[0] : "", e ? `1:1 best hit, ${e[1]}% identity` : "no 1:1 match"]); }
+    else if (GI.has(t)) convRows.push([t, "current", t, "already current"]);
+    else { const pid = t.replace(/^LOC/i, ""); const e = D.prev[pid]; if (e) e.forEach(x => convRows.push([t, "Roslin v1 RefSeq", x[1], x[0]])); else convRows.push([t, "unknown", "", "not in NCBI comparison"]); } });
+  document.getElementById("cout").innerHTML = `<table><thead><tr><th>Input</th><th>Type</th><th>Current ID</th><th>Relation</th><th>In atlas</th></tr></thead><tbody>` +
+    convRows.map(r => { const inA = r[2] && GI.has(r[2]); const cls = /Identical|Similar|best hit|already/.test(r[3]) ? "ok" : "warn";
+      return `<tr><td class="mono">${esc(r[0])}</td><td class="muted">${r[1]}</td><td class="mono">${inA ? `<a href="#g.${esc(r[2])}">${esc(r[2])}</a>` : esc(r[2] || "none")}</td><td><span class="pill ${cls}">${esc(r[3])}</span></td><td>${inA ? "yes" : "no"}</td></tr>`; }).join("") + `</tbody></table>`; }
+document.getElementById("cgo").onclick = runConv;
+document.getElementById("ccopy").onclick = e => copyText(e.target, "input\ttype\tcurrent_id\trelation\n" + convRows.map(r => r.join("\t")).join("\n"));
+{ const ks = Object.keys(D.ens).slice(0, 3), ps = Object.keys(D.prev).slice(0, 4).map(x => "LOC" + x); document.getElementById("cq").value = ks.concat(ps).join("\n"); runConv(); }
+
+// ---------------- cite
+document.getElementById("v-cite").innerHTML = `<div style="display:grid;gap:10px"><div class="eyebrow">Data and cite</div><h1>Download and cite</h1><p class="note">Version: ${esc(VER)}. Genome: ${esc(D.genome)}.</p></div>
+  <div class="panel" style="display:grid;gap:10px"><h2>Files (to be deposited with the paper)</h2><div class="tbl"><table><thead><tr><th>File</th><th>What it is</th><th>Where</th></tr></thead><tbody>
+    <tr><td>6 atlas files (Seurat .rds, .h5ad)</td><td>raw counts, cell names, confidence, map coordinates</td><td>Zenodo (DOI on publication)</td></tr>
+    <tr><td>Marker database (.xlsx, .tsv)</td><td>published markers translated to current IDs; top genes of every cell type</td><td>Zenodo + paper supplement</td></tr>
+    <tr><td>Cell-type average table (.tsv)</td><td>mean and % per cell type, for reading bulk RNA-seq</td><td>Zenodo</td></tr>
+    <tr><td>ID crosswalk (.tsv)</td><td>Roslin v1 to xbMagGiga1.1</td><td>Zenodo</td></tr>
+    <tr><td>gigasatlas (R and Python)</td><td>names the cells of new oyster data with these references (R: directly on a Seurat object)</td><td>GitHub + Zenodo</td></tr></tbody></table></div>
+    <p class="note">Raw reads are not redistributed; use the original accessions below.</p></div>
+  <div class="panel" style="display:grid;gap:10px"><h2>Source studies</h2><div class="tbl"><table><thead><tr><th>Dataset</th><th>Study</th><th>Accession</th></tr></thead><tbody>
+    <tr><td>Embryo</td><td>Gavery et al. 2025, BMC Genomics</td><td class="mono">PRJNA909306</td></tr><tr><td>Trochophore larva</td><td>Piovani et al. 2023, Science Advances</td><td class="mono">PRJNA967338</td></tr>
+    <tr><td>Hemocytes</td><td>de La Forest Divonne et al. 2025, eLife</td><td class="mono">PRJEB74031</td></tr><tr><td>Hemocyte priming</td><td>no paper (Dalian Ocean University)</td><td class="mono">PRJNA1236035</td></tr>
+    <tr><td>Gonad</td><td>Wang et al. 2024, iScience; Wang et al. 2025, Communications Biology</td><td class="mono">PRJNA983861, PRJNA1244049, PRJNA1347576</td></tr>
+    <tr><td>Ganglia</td><td>Yang et al. 2026, BMC Biology</td><td class="mono">PRJNA1457765</td></tr><tr><td>Mantle</td><td>Bai et al. 2026, bioRxiv</td><td class="mono">PRJNA1338802</td></tr></tbody></table></div></div>
+  <div class="panel two"><div style="display:grid;gap:8px;align-content:start"><h2>How the one-line verdict is made</h2><p class="note">We borrow the Human Protein Atlas single-cell categories and thresholds: enriched (at least 4 times any other cell type), group enriched (2 to 5 cell types at least 4 times the rest), enhanced (at least 4 times the average), not detected (below 1). Here they are applied to cell-type means in CP10k across all 209 cell types, so tissue and study differences also contribute.</p></div>
+    <div style="display:grid;gap:8px;align-content:start"><h2>How to cite</h2><p class="note">Manuscript in preparation. Until then, cite this page with its version and the source studies above.</p></div></div>`;
+
+// ---------------- router
+function copyText(btn, txt){ const done = ok => { const o = btn.textContent; btn.textContent = ok ? "Copied" : "Select and copy"; setTimeout(() => btn.textContent = o, 1400); };
+  try { navigator.clipboard.writeText(txt).then(() => done(true), () => done(false)); } catch (e) { done(false); } }
+const VIEWS = ["home", "gene", "type", "types", "list", "convert", "cite"];
+function go(h){ if (location.hash === "#" + h) route(); else location.hash = h; }
+let keepScroll = false;
+function show(v){ VIEWS.forEach(x => document.getElementById("v-" + x).hidden = x !== v);
+  const navv = {home: "home", gene: "home", type: "types", types: "types", list: "list", convert: "convert", cite: "cite"}[v];
+  document.querySelectorAll("#nav a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + navv ? "page" : "false")); if (!keepScroll) window.scrollTo(0, 0); }
+function route(){ const h = decodeURIComponent(location.hash.replace(/^#/, "")); sg.hidden = true;
+  if (h.startsWith("g.") && GI.has(h.slice(2))) { show("gene"); geneView(GI.get(h.slice(2))); }
+  else if (/^t\.\d+$/.test(h) && +h.slice(2) < nL) { show("type"); typeView(+h.slice(2)); }
+  else if (h.startsWith("types")) { show("types"); typesView(h.split(".")[1]); }
+  else if (h === "list") { show("list"); if (!document.getElementById("lq").value) loadExample(); }
+  else if (h === "convert" || h === "cite") show(h);
+  else { show("home"); drawHero(); drawCards(); startHero(); } }
+window.addEventListener("hashchange", route);
+let rt, lastW = window.innerWidth; window.addEventListener("resize", () => { if (Math.abs(window.innerWidth - lastW) < 40) return; lastW = window.innerWidth;
+  clearTimeout(rt); rt = setTimeout(() => { keepScroll = true; route(); keepScroll = false; }, 250); });
+route();
+})();
+</script>
+</body>
+</html>

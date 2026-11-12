@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Gigas Cell Atlas: 186,414 Pacific oyster cells from 8 public single-cell studies, reprocessed on one genome (xbMagGiga1.1).">
+<meta property="og:title" content="Gigas Cell Families">
+<meta property="og:description" content="Gigas Cell Atlas: 186,414 Pacific oyster cells from 8 public single-cell studies, reprocessed on one genome (xbMagGiga1.1).">
+<meta name="theme-color" content="#040606">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Gigas Cell Families</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* Shared by the project page and the family browser (inlined by code/web_v4_build.py).
+   Single dark theme: near-black ground, glowing cell maps, nacre (mother-of-pearl) gradient as the one accent. */
+:root{
+  color-scheme:dark;
+  --bg:#040606; --surface:#0A0F11; --surface2:#0E1518; --raise:#131C20;
+  --ink:#E9EFF0; --muted:#8C9CA2; --dim:#5C6B71; --line:#162024; --line2:#233138;
+  --accent:#5EEAD4; --accent-ink:#03211C; --accent-soft:rgba(94,234,212,.09);
+  --warn:#F2B562; --ok:#7BE0A4; --glass:rgba(4,6,6,.76); --dot-off:#1B2529; --dot-unk:#3A474C;
+  --nacre:linear-gradient(100deg,#A7F3E4 0%,#BCC8FF 42%,#F4C9E6 76%,#FFE3BF 100%);
+  --f-display:"Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --f-body:"Geist", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono:"Geist Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --a-development:#F5B03A; --a-hemocyte:#FF7A45; --a-priming:#E58BC9; --a-gonad:#34D399; --a-ganglia:#4EA8FF; --a-mantle:#7DD3FC;
+  --l-hemocyte:#FF7A45; --l-neural:#4EA8FF; --l-epithelial:#7DD3FC; --l-connective:#F5B03A; --l-germline:#34D399; --l-gonadsom:#A3E635; --l-embryonic:#E58BC9; --l-unresolved:#5C6B71;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.fx{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(1000px 560px at 12% -10%,rgba(94,234,212,.09),transparent 60%),radial-gradient(900px 700px at 110% 120%,rgba(244,201,230,.06),transparent 60%)}
+.wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--accent)} a:focus-visible,button:focus-visible,input:focus-visible,canvas:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+::selection{background:rgba(94,234,212,.28)}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--glass);-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--ink);text-decoration:none}
+.brand svg{flex:none}
+.brand b{font:600 16px/1.1 var(--f-body);letter-spacing:-.1px}
+.brand small{display:block;font:500 10.5px/1.3 var(--f-mono);color:var(--dim);letter-spacing:.9px;text-transform:uppercase;margin-top:2px}
+nav{display:flex;flex-wrap:wrap;align-items:center;gap:2px;margin-left:auto}
+nav a{padding:6px 11px;border-radius:999px;text-decoration:none;color:var(--muted);font-size:14px;font-weight:500;transition:color .15s,background .15s}
+nav a:hover{color:var(--ink)}
+nav a[aria-current="page"]{color:var(--ink);background:var(--raise);box-shadow:inset 0 0 0 1px var(--line2)}
+nav a.cta{margin-left:8px;color:var(--accent-ink);background:var(--accent);font-weight:600}
+nav a.cta:hover{color:var(--accent-ink);background:#86F2E2}
+
+h1{font:400 clamp(30px,4.6vw,48px)/1.06 var(--f-display);margin:0;letter-spacing:-.4px;text-wrap:balance}
+h2{font:400 clamp(28px,3.4vw,40px)/1.08 var(--f-display);margin:0;letter-spacing:-.3px;text-wrap:balance}
+h3{font:600 17px/1.3 var(--f-body);margin:0;letter-spacing:-.15px}
+.nacre{background:var(--nacre);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{font:500 11.5px/1.3 var(--f-mono);letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:1px;background:currentColor}
+.label{font:500 10.5px/1.3 var(--f-mono);letter-spacing:1px;text-transform:uppercase;color:var(--dim)}
+.muted{color:var(--muted)} .mono{font-family:var(--f-mono);font-size:.92em}
+.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.note{font-size:14px;color:var(--muted);margin:0;max-width:72ch}
+.sw{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.btn{display:inline-flex;align-items:center;gap:8px;font:500 14px var(--f-body);border:1px solid var(--line2);background:var(--raise);color:var(--ink);border-radius:10px;padding:10px 16px;cursor:pointer;text-decoration:none;transition:border-color .15s,background .15s}
+.btn:hover{border-color:var(--dim)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+.btn.primary:hover{background:#86F2E2}
+button{font:500 13px var(--f-body);border:1px solid var(--line2);background:var(--raise);color:var(--ink);border-radius:8px;padding:6px 12px;cursor:pointer}
+button:hover{border-color:var(--dim)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;min-width:0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.9px;color:var(--dim)}
+tbody tr:hover td{background:rgba(255,255,255,.015)}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:11.5px;background:var(--raise);border:1px solid var(--line2);color:var(--muted);white-space:nowrap}
+.pill.warn{color:var(--warn)} .pill.ok{color:var(--ok)}
+pre.code{margin:0;padding:14px 16px;border-radius:12px;background:#070B0C;border:1px solid var(--line2);font:12.5px/1.6 var(--f-mono);color:var(--ink);overflow-x:auto}
+pre.code .c{color:var(--dim)}
+
+footer{position:relative;z-index:1;margin-top:70px;border-top:1px solid var(--line)}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));gap:24px;padding-block:30px 40px;font-size:13px;color:var(--muted)}
+footer b{display:block;color:var(--ink);font-weight:500;margin-bottom:6px}
+footer p{margin:0}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:3px}
+@media (max-width:760px){ nav{margin-left:0} footer .wrap{grid-template-columns:1fr} }
+
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 40px;align-items:end;padding-block:44px 22px}
+.intro > div{display:grid;gap:12px;min-width:0}
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:14px}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filters .sep{width:1px;height:20px;background:var(--line2);margin:0 6px}
+.layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px;align-items:start}
+.matrix{overflow-x:auto;padding-inline:12px}
+.mx{display:grid;grid-template-columns:minmax(150px,3fr) repeat(8,minmax(26px,.5fr)) 32px;min-width:500px}
+.mx > div{padding:7px 4px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12.5px}
+.mx .hd{font:500 9.5px/1.2 var(--f-mono);letter-spacing:.6px;text-transform:uppercase;color:var(--dim);writing-mode:vertical-rl;transform:rotate(180deg);justify-content:flex-start;padding:8px 4px;height:112px;border-bottom:1px solid var(--line2)}
+.mx .hd.first{writing-mode:horizontal-tb;transform:none;align-items:flex-end;justify-content:flex-start}
+.mx .nm{justify-content:flex-start;gap:8px;color:var(--muted);text-align:left;line-height:1.3}
+.mx .nm em{font-style:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-width:0}
+.mx .nm b{font:500 11px var(--f-mono);color:var(--dim);min-width:24px}
+.mx .row{cursor:pointer}
+.mx .hov{background:rgba(255,255,255,.025)}
+.mx .sel{background:var(--accent-soft)}
+.mx .sel.nm{color:var(--ink);box-shadow:inset 2px 0 0 var(--accent)}
+.mx i{display:block;border-radius:50%}
+.mx .cnt{font:500 11px var(--f-mono);color:var(--dim)}
+.detail{position:sticky;top:84px;display:grid;gap:16px}
+.dh{display:grid;gap:8px}
+.maps{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+.maps figure{margin:0;display:grid;gap:5px;padding:7px;border-radius:12px;background:var(--surface2);border:1px solid var(--line)}
+.maps canvas{width:100%;aspect-ratio:1;max-width:100%}
+.maps figcaption{font:500 10px var(--f-mono);letter-spacing:.6px;text-transform:uppercase;color:var(--muted);display:flex;gap:6px;align-items:center}
+.members{display:grid;gap:2px}
+.members a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:6px 8px;border-radius:7px;text-decoration:none;color:var(--ink);font-size:13.5px}
+.members a:hover{background:var(--raise)}
+.members a span:first-child{display:flex;gap:8px;align-items:center;min-width:0}
+.members a em{font-style:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.members .ds{font:500 11px var(--f-mono);color:var(--dim);white-space:nowrap}
+.au{display:inline-block;height:6px;border-radius:99px;background:var(--accent);box-shadow:0 0 8px var(--accent);vertical-align:middle;margin-right:8px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:6px}
+@media (max-width:980px){ .layout,.intro{grid-template-columns:1fr} .detail{position:static} }
+</style>
+</head>
+<body>
+<div class="fx" aria-hidden="true"></div>
+<header><div class="wrap">
+  <a class="brand" href="./" aria-label="Gigas Cell Atlas project page">
+    <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="ng" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A7F3E4"/><stop offset=".5" stop-color="#BCC8FF"/><stop offset="1" stop-color="#F4C9E6"/></linearGradient></defs>
+      <path d="M16 3c7 2 12 8 12 15 0 6-5 11-12 11S4 24 4 18C4 11 9 5 16 3z" fill="none" stroke="url(#ng)" stroke-width="1.6"/>
+      <path d="M16 8c4 1.6 7 5.4 7 10 0 3.6-3 6.5-7 6.5S9 21.6 9 18c0-4.6 3-8.4 7-10z" fill="none" stroke="url(#ng)" stroke-width="1.2" opacity=".7"/>
+      <circle cx="16" cy="18" r="2.6" fill="url(#ng)"/></svg>
+    <span><b>Gigas Cell Atlas</b><small>Cell-type families</small></span></a>
+  <nav><a href="./">About</a><a href="families.html" aria-current="page">Families</a><a class="cta" href="explorer/">Open explorer</a></nav>
+</div></header>
+
+<main class="wrap">
+  <div class="intro">
+    <div><div class="eyebrow">Family browser</div><h1>The same cell type, <em class="nacre">found again</em> in another dataset</h1></div>
+    <p class="note" id="method"></p>
+  </div>
+  <div class="filters" id="filters"></div>
+  <div class="layout">
+    <div class="panel matrix"><div class="mx" id="mx"></div>
+      <div class="legend" style="margin-top:12px" id="leg"></div></div>
+    <div class="panel detail" id="detail"></div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <div><b>Gigas Cell Atlas</b><p>Families are built from transcriptional similarity of cell-type averages. They are hypotheses of shared identity, not lineage tracing.</p></div>
+  <div><b>Explore</b><ul><li><a href="./">Project page</a></li><li><a href="explorer/">Atlas explorer</a></li><li><a href="explorer/#types">All cell types</a></li></ul></div>
+  <div><b>Method</b><p>MetaNeighbor R package (MetaNeighborUS) on Seurat-normalised data and 3,426 variable genes (Seurat vst); label-shuffle null.</p></div>
+</div></footer>
+
+<script src="atlas_lite.js"></script>
+<script>
+(function(){
+// Shared by the project page and the family browser (inlined by code/web_v4_build.py). Needs window.ATLAS from atlas_lite.js.
+const A = window.ATLAS;
+const dec = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = n => n.toLocaleString("en-US");
+const RM = matchMedia("(prefers-reduced-motion: reduce)");
+const DSN = {early_embryo:"Cleavage / blastula", gastrula:"Gastrula", trochophore:"Trochophore larva", hemocyte:"Hemocytes", priming:"Hemocyte priming", gonad:"Gonad", ganglia:"Ganglia", mantle:"Mantle"};
+const DS2B = {early_embryo:"development", gastrula:"development", trochophore:"development", hemocyte:"hemocyte", priming:"priming", gonad:"gonad", ganglia:"ganglia", mantle:"mantle"};
+const BN = {development:"Development", hemocyte:"Hemocytes", priming:"Hemocyte priming", gonad:"Gonad", ganglia:"Ganglia", mantle:"Mantle"};
+const BSUB = {development:"embryo + larva", hemocyte:"blood, whole cells", priming:"blood, primed", gonad:"nuclei", ganglia:"nuclei", mantle:"whole cells"};
+const HB = Object.keys(BN), DSORD = Object.keys(DSN);
+const LINK = {"hemocyte":"--l-hemocyte", "neural":"--l-neural", "epithelial/secretory":"--l-epithelial", "connective/muscle":"--l-connective", "germline":"--l-germline", "gonad somatic":"--l-gonadsom", "embryonic/other":"--l-embryonic", "unresolved":"--l-unresolved"};
+const LINNAME = {"hemocyte":"Hemocyte", "neural":"Neural", "epithelial/secretory":"Epithelial, secretory", "connective/muscle":"Connective, muscle", "germline":"Germline", "gonad somatic":"Gonad somatic", "embryonic/other":"Embryonic, other", "unresolved":"Unresolved"};
+const lincol = lin => css(LINK[lin] || "--l-unresolved");
+A.labels.forEach(L => { if (/^nan$/i.test(L.name)) L.name = "Unnamed by authors"; });
+const UM = {}; for (const b in A.umap) UM[b] = { xy: new Uint16Array(dec(A.umap[b].xy).buffer), lab: dec(A.umap[b].lab), n: A.umap[b].n };
+const PAL = ["#4EA8FF","#FF9F43","#34D399","#FF6B6B","#A78BFA","#C08457","#F472B6","#94A3B8","#D9E35B","#22D3EE","#93C5FD","#FDBA74","#86EFAC","#FCA5A5","#C4B5FD","#E7B98F","#F9A8D4","#E5E58A","#99F6E4","#6366F1","#84CC16","#EAB308","#EF4444","#D946EF","#3B82F6","#F97316"];
+const LABCOL = {}; { const cnt = {}, unk = css("--dot-unk"); A.labels.forEach((L, l) => { const k = DS2B[L.ds]; cnt[k] = cnt[k] || 0; LABCOL[l] = /nresolved|^Unk|Unnamed/.test(L.name) ? unk : PAL[cnt[k]++ % PAL.length]; }); }
+const bcount = b => { const ls = A.labels.filter(L => DS2B[L.ds] === b); return [ls.reduce((s, L) => s + L.n, 0), ls.length]; };
+
+// Two passes: additive halo, then sharp core, so dense clusters glow.
+// mode "type": colour by cell type; "lin": by lineage; "set": only labels in arg (a Map label -> colour) lit.
+function drawMap(c, b, mode, arg){
+  const dpr = Math.min(2, window.devicePixelRatio || 1), Wc = c.clientWidth || 200; c.width = c.height = Math.round(Wc * dpr);
+  const ctx = c.getContext("2d"), W = c.width, H = c.height, u = UM[b], pad = W * 0.06, s = (W - 2 * pad) / 1000;
+  ctx.clearRect(0, 0, W, H);
+  const r = Math.max(0.7 * dpr, W / 340), off = css("--dot-off"), idx = [...Array(u.n).keys()];
+  let colf, lit;
+  if (mode === "set") { idx.sort((a, bb) => arg.has(u.lab[a]) - arg.has(u.lab[bb])); lit = i => arg.has(u.lab[i]); colf = i => lit(i) ? arg.get(u.lab[i]) : off; }
+  else if (mode === "lin") { const lc = {}; lit = () => true; colf = i => { const l = u.lab[i]; return lc[l] || (lc[l] = lincol(A.labels[l].lin)); }; }
+  else { lit = () => true; colf = i => LABCOL[u.lab[i]]; }
+  const X = i => pad + u.xy[2 * i] * s, Y = i => H - pad - u.xy[2 * i + 1] * s;
+  ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = mode === "set" ? 0.09 : 0.05;
+  for (const i of idx) { if (!lit(i)) continue; ctx.fillStyle = colf(i); ctx.beginPath(); ctx.arc(X(i), Y(i), r * 3.4, 0, 6.283); ctx.fill(); }
+  ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 0.92;
+  for (const i of idx) { ctx.fillStyle = colf(i); ctx.beginPath(); ctx.arc(X(i), Y(i), r, 0, 6.283); ctx.fill(); }
+  ctx.globalAlpha = 1;
+}
+function copyText(btn, txt){ const o = btn.textContent, done = ok => { btn.textContent = ok ? "Copied" : "Select and copy"; setTimeout(() => btn.textContent = o, 1400); };
+  try { navigator.clipboard.writeText(txt).then(() => done(true), () => done(false)); } catch (e) { done(false); } }
+function onResize(fn){ let t, w = window.innerWidth; window.addEventListener("resize", () => { if (Math.abs(window.innerWidth - w) < 40) return; w = window.innerWidth; clearTimeout(t); t = setTimeout(fn, 250); }); }
+
+const F = A.families.map(f => { const ds = new Set(f.labels.map(l => A.labels[l].ds)); const top = [...f.labels].sort((a, b) => A.labels[b].n - A.labels[a].n);
+  return { ...f, ds, top, edges: A.edges.filter(e => f.labels.includes(e[0]) && f.labels.includes(e[1])).sort((a, b) => b[2] - a[2]) }; });
+F.sort((a, b) => b.ds.size - a.ds.size || b.labels.length - a.labels.length);
+document.getElementById("method").textContent = `Each cell type was compared with every cell type of the other datasets without merging cells. A pair matches when the two are reciprocal top hits with AUROC at least 0.9 and one-vs-best AUROC at least 0.6. ${A.edges.length} pairs matched in at least 6 of 9 re-runs with different cells and genes, and these robust pairs join into ${F.length} families. Pick a row to see its members on the maps.`;
+const LINS = [...new Set(F.map(f => f.lineage))];
+let fl = "all", fmin = 2, sel = F[0].id;
+function filters(){ document.getElementById("filters").innerHTML = `<button data-l="all" aria-pressed="${fl === "all"}">All lineages</button>` +
+    LINS.map(l => `<button data-l="${esc(l)}" aria-pressed="${fl === l}"><span class="sw" style="background:${lincol(l)};margin-right:6px"></span>${LINNAME[l] || esc(l)}</button>`).join("") +
+    `<span class="sep"></span>` + [2, 3, 5].map(m => `<button data-m="${m}" aria-pressed="${fmin === m}">${m}+ datasets</button>`).join("");
+  document.querySelectorAll("#filters [data-l]").forEach(b => b.onclick = () => { fl = b.dataset.l; render(); });
+  document.querySelectorAll("#filters [data-m]").forEach(b => b.onclick = () => { fmin = +b.dataset.m; render(); }); }
+function render(){ filters();
+  const vis = F.filter(f => (fl === "all" || f.lineage === fl) && f.ds.size >= fmin);
+  if (!vis.some(f => f.id === sel) && vis.length) sel = vis[0].id;
+  const mx = document.getElementById("mx");
+  let h = `<div class="hd first">Family</div>` + DSORD.map(d => `<div class="hd" style="color:var(--a-${DS2B[d]})">${DSN[d]}</div>`).join("") + `<div class="hd">Types</div>`;
+  vis.forEach(f => { const c = lincol(f.lineage), s = f.id === sel ? " sel" : "";
+    h += `<div class="row nm${s}" data-f="${f.id}" title="${esc(A.labels[f.top[0]].name)}"><b>F${f.id}</b><span class="sw" style="background:${c}"></span><em>${esc(A.labels[f.top[0]].name)}</em></div>`;
+    DSORD.forEach(d => { const k = f.labels.filter(l => A.labels[l].ds === d).length, sz = k ? Math.min(16, 7 + k * 3) : 0;
+      h += `<div class="row${s}" data-f="${f.id}">${k ? `<i style="width:${sz}px;height:${sz}px;background:${c};box-shadow:0 0 10px ${c}" title="${k} cell type${k > 1 ? "s" : ""}"></i>` : ""}</div>`; });
+    h += `<div class="row cnt${s}" data-f="${f.id}">${f.labels.length}</div>`; });
+  mx.innerHTML = vis.length ? h : `<p class="note" style="padding:12px">No family matches these filters.</p>`;
+  mx.querySelectorAll(".row").forEach(el => { el.onclick = () => { sel = +el.dataset.f; render(); };
+    el.onmouseenter = () => mx.querySelectorAll(`[data-f="${el.dataset.f}"]`).forEach(x => x.classList.add("hov"));
+    el.onmouseleave = () => mx.querySelectorAll(".hov").forEach(x => x.classList.remove("hov")); });
+  document.getElementById("leg").innerHTML = `<span>Dot size = number of cell types from that dataset in the family</span>`;
+  if (vis.length) detail(F.find(f => f.id === sel)); else document.getElementById("detail").innerHTML = "";
+}
+function detail(f){
+  const c = lincol(f.lineage), atl = HB.filter(b => f.labels.some(l => DS2B[A.labels[l].ds] === b));
+  const mxA = Math.max(...f.edges.map(e => e[2]), 1);
+  const el = document.getElementById("detail");
+  el.innerHTML = `<div class="dh"><span class="label" style="color:${c}">Family F${f.id}, ${LINNAME[f.lineage] || esc(f.lineage)}</span>
+      <h2 style="font-size:clamp(24px,2.6vw,32px)">${esc(A.labels[f.top[0]].name)}</h2>
+      <p class="note">${f.labels.length} cell types in ${f.ds.size} datasets, ${f.edges.length} robust links.</p></div>
+    <div class="maps" id="fmaps">${atl.map(b => `<figure><canvas data-b="${b}"></canvas><figcaption><i class="sw" style="background:var(--a-${b})"></i>${BN[b]}</figcaption></figure>`).join("")}</div>
+    <div style="display:grid;gap:6px"><span class="label">Members</span><div class="members">${DSORD.flatMap(d => f.labels.filter(l => A.labels[l].ds === d)).map(l => { const L = A.labels[l], b = DS2B[L.ds];
+      return `<a href="explorer/#t.${l}" title="${esc(L.name)}"><span><i class="sw" style="background:var(--a-${b});box-shadow:0 0 8px var(--a-${b})"></i><em>${esc(L.name)}</em></span><span class="ds">${DSN[L.ds]}, ${fmt(L.n)}</span></a>`; }).join("")}</div></div>
+    <div style="display:grid;gap:6px"><span class="label">Links, strongest first</span><div class="tbl"><table><thead><tr><th>Cell type</th><th>Cell type</th><th>AUROC</th></tr></thead><tbody>${f.edges.map(e => `<tr><td>${esc(A.labels[e[0]].name)} <span class="muted" style="font-size:12px">${DSN[A.labels[e[0]].ds]}</span></td><td>${esc(A.labels[e[1]].name)} <span class="muted" style="font-size:12px">${DSN[A.labels[e[1]].ds]}</span></td><td class="mono" style="white-space:nowrap"><span class="au" style="width:${Math.round(4 + 46 * Math.max(0, (e[2] - 0.9) / Math.max(0.0001, mxA - 0.9)))}px"></span>${e[2].toFixed(3)}</td></tr>`).join("")}</tbody></table></div></div>`;
+  const lit = new Map(f.labels.map(l => [l, css("--a-" + DS2B[A.labels[l].ds])]));
+  el.querySelectorAll("#fmaps canvas").forEach(cv => drawMap(cv, cv.dataset.b, "set", lit));
+}
+render(); onResize(render);
+})();
+</script>
+</body>
+</html>
