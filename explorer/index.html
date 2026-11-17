@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Gigas Cell Atlas: 186,414 Pacific oyster cells from 8 public single-cell studies, reprocessed on one genome (xbMagGiga1.1).">
+<meta name="description" content="Gigas Cell Atlas: 203,071 Pacific oyster cells from 8 public single-cell studies, reprocessed on one genome (xbMagGiga1.1) with Cell Ranger.">
 <meta property="og:title" content="Gigas Cell Atlas Explorer">
-<meta property="og:description" content="Gigas Cell Atlas: 186,414 Pacific oyster cells from 8 public single-cell studies, reprocessed on one genome (xbMagGiga1.1).">
+<meta property="og:description" content="Gigas Cell Atlas: 203,071 Pacific oyster cells from 8 public single-cell studies, reprocessed on one genome (xbMagGiga1.1) with Cell Ranger.">
 <meta name="theme-color" content="#040606">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Gigas Cell Atlas</title>
@@ -123,6 +123,7 @@ button.primary:hover{background:#86F2E2}
 .feat code{font:12px var(--f-mono);color:var(--ink);background:var(--raise);padding:2px 6px;border-radius:5px}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;min-width:0}
 .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:18px}
+#v-convert .two{grid-template-columns:minmax(0,1fr)} #cout{overflow-x:auto}
 
 /* gene and type pages */
 .crumb{font:500 11.5px var(--f-mono);letter-spacing:.8px;text-transform:uppercase;color:var(--dim)} .crumb a{color:var(--muted);text-decoration:none}
@@ -224,7 +225,7 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:3px}
 <section id="v-gene" hidden></section>
 <section id="v-type" hidden></section>
 <section id="v-types" hidden>
-  <div style="display:grid;gap:10px"><div class="eyebrow">Browse</div><h1>Cell types</h1><p class="note">209 cell types in 8 datasets. Names follow lineage, then type; the authors' original name is kept where it exists.</p></div>
+  <div style="display:grid;gap:10px"><div class="eyebrow">Browse</div><h1>Cell types</h1><p class="note">211 cell types in 8 datasets. Names follow lineage, then type; the authors' original name is kept where it exists.</p></div>
   <div class="search slim"><input id="tf" type="search" placeholder="Filter cell types" aria-label="Filter cell types"></div>
   <div id="tlist" style="display:grid;gap:16px"></div>
 </section>
@@ -242,7 +243,12 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:3px}
 </section>
 <section id="v-convert" hidden>
   <div style="display:grid;gap:10px"><div class="eyebrow">Converter</div><h1>Old gene IDs to current IDs</h1>
-  <p class="note">Roslin v1 Ensembl IDs (G#####) are matched by reciprocal best protein hit (1:1 only). Roslin v1 RefSeq IDs (LOC#### or GeneID) use NCBI's own annotation comparison table (RS_2024_06), which also flags split, merged and changed genes.</p></div>
+  <p class="note">Paste gene IDs from an older paper. Each one is converted to the current gene, and you see what the gene is (its NCBI description) and where it is expressed in the atlas, with a link to its full profile.</p>
+  <div class="panel" style="display:grid;gap:8px"><h2>Why IDs changed</h2>
+    <p class="note">Most oyster papers before 2024 used the Roslin v1 assembly (cgigas_uk_roslin_v1, 2020), with Ensembl IDs (G#####) or RefSeq IDs from NCBI annotation release 102. This atlas uses the current chromosome-level assembly xbMagGiga1.1 (Sanger, 2023) with RefSeq annotation RS_2024_06 (33,331 genes). Gene models were re-predicted, so some genes were split, merged or changed, and the same gene can have a new LOC number.</p>
+    <p class="note"><b>How IDs are matched.</b> Roslin v1 RefSeq IDs (LOC or GeneID): NCBI's own comparison of the two annotation releases. Roslin v1 Ensembl IDs (G#####): reciprocal best protein hit (DIAMOND blastp), one-to-one only, with percent identity.</p>
+    <p class="note"><b>How to read the relation.</b> Identical or Similar: same gene, safe to use. Split: the old gene is now two or more genes, so check which one your result came from. Merged: several old genes became one. Changed (substantially, or a new locus type or ID): same place in the genome but a different model, so check the description. Previous-unmapped, Previous-novel or no 1:1 match: no reliable current gene, treat with care.</p>
+    <p class="note"><b>What the description means.</b> Oyster genes have no naming committee. NCBI names each gene after the best-matching known protein in other animals (for example paramyosin, or paramyosin-like when less similar); 'uncharacterized protein' means no good match. The name is a hint from sequence similarity, not proof of function in the oyster. The atlas column adds what the oyster data show: the cell types where the gene is highest.</p></div></div>
   <div class="two">
     <div style="display:grid;gap:10px;align-content:start"><textarea id="cq" aria-label="IDs to convert"></textarea>
       <div class="ctrls"><button id="cgo" class="primary">Convert</button><button id="ccopy">Copy table</button></div></div>
@@ -262,7 +268,7 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:3px}
 <script>
 (function(){
 const D = window.PORTAL;
-const VER = "v5, 2026-11-12 (atlas v4 cells, Seurat)";
+const VER = "v7, 2026-11-17 (Cell Ranger 7.0.1 counts, Seurat)";
 D.labels.forEach(L => { if (/^nan$/i.test(L.name)) { L.name = "Unnamed by authors"; L.full = "Unnamed by authors"; } });
 const dec = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 const MEAN = dec(D.mean), FRAC = dec(D.frac), nL = D.nL, nG = D.nG, FW = Math.ceil(nL / 2);
@@ -377,7 +383,7 @@ function drawCards(){ document.querySelectorAll("#atl canvas").forEach(c => draw
   document.getElementById("feat").innerHTML = [
     [g6 != null ? "#g." + D.genes[g6] : "#home", "01", "Look up one gene", `See its level in all ${nL} cell types with a one-line verdict. Example: <code>gigasin-6</code> sits in the shell-forming mantle epithelium.`],
     ["#list", "02", "Read a gene list", "Paste DE genes from bulk RNA-seq. The cell types they come from rise to the top. Example: sorted granulocyte genes point to vesicular cells in five tissues."],
-    ["#convert", "03", "Convert old IDs", "Roslin v1 gene IDs from older papers become current IDs. Example: <code>G11998</code> becomes <code>LOC105343850</code>."]]
+    ["#convert", "03", "Convert old IDs", "Roslin v1 gene IDs from older papers become current IDs, with what each gene is and where it is expressed. Example: <code>G11998</code> becomes <code>LOC105343850</code>."]]
     .map(([h, i, t, p]) => `<a class="feat" href="${h}"><i>${i}</i><b>${t}</b><p>${p}</p></a>`).join(""); }
 
 // ---------------- gene page
@@ -485,11 +491,15 @@ function runConv(){ const toks = document.getElementById("cq").value.split(/[\s,
   toks.forEach(t => { if (/^G\d+$/i.test(t)) { const e = D.ens[t.toUpperCase()]; convRows.push([t, "Roslin v1 Ensembl", e ? e[0] : "", e ? `1:1 best hit, ${e[1]}% identity` : "no 1:1 match"]); }
     else if (GI.has(t)) convRows.push([t, "current", t, "already current"]);
     else { const pid = t.replace(/^LOC/i, ""); const e = D.prev[pid]; if (e) e.forEach(x => convRows.push([t, "Roslin v1 RefSeq", x[1], x[0]])); else convRows.push([t, "unknown", "", "not in NCBI comparison"]); } });
-  document.getElementById("cout").innerHTML = `<table><thead><tr><th>Input</th><th>Type</th><th>Current ID</th><th>Relation</th><th>In atlas</th></tr></thead><tbody>` +
-    convRows.map(r => { const inA = r[2] && GI.has(r[2]); const cls = /Identical|Similar|best hit|already/.test(r[3]) ? "ok" : "warn";
-      return `<tr><td class="mono">${esc(r[0])}</td><td class="muted">${r[1]}</td><td class="mono">${inA ? `<a href="#g.${esc(r[2])}">${esc(r[2])}</a>` : esc(r[2] || "none")}</td><td><span class="pill ${cls}">${esc(r[3])}</span></td><td>${inA ? "yes" : "no"}</td></tr>`; }).join("") + `</tbody></table>`; }
+  convRows.forEach(r => { const gi = r[2] && GI.has(r[2]) ? GI.get(r[2]) : null; r[4] = gi != null ? (D.product[gi] || "no product name") : ""; r[5] = gi != null ? convWhere(gi) : ""; r[6] = gi; });
+  document.getElementById("cout").innerHTML = `<table><thead><tr><th>Input</th><th>Type</th><th>Current ID</th><th>Relation</th><th>What it is (NCBI description)</th><th>Where in the atlas</th></tr></thead><tbody>` +
+    convRows.map(r => { const inA = r[6] != null; const cls = /Identical|Similar|best hit|already/.test(r[3]) ? "ok" : "warn";
+      return `<tr><td class="mono">${esc(r[0])}</td><td class="muted">${r[1]}</td><td class="mono">${inA ? `<a href="#g.${esc(r[2])}">${esc(r[2])}</a>` : esc(r[2] || "none")}</td><td><span class="pill ${cls}">${esc(r[3])}</span></td><td>${inA ? esc(r[4]) : '<span class="muted">not in atlas</span>'}</td><td>${inA ? convWhereHtml(r[6]) : ""}</td></tr>`; }).join("") + `</tbody></table>`; }
+function convWhere(gi){ const v = D.verdict[gi], cat = D.verdict_cats[v[0]], ls = v.slice(1); return cat + (ls.length ? ": " + ls.slice(0, 3).map(l => D.labels[l].name + " (" + DSN[D.labels[l].ds] + ")").join(", ") : ""); }
+function convWhereHtml(gi){ const v = D.verdict[gi], cat = D.verdict_cats[v[0]], ls = v.slice(1);
+  return `<span class="pill">${esc(cat)}</span> ` + ls.slice(0, 3).map(l => `<a href="#t.${l}">${esc(D.labels[l].name)}</a> <span class="muted">(${DSN[D.labels[l].ds]})</span>`).join(", "); }
 document.getElementById("cgo").onclick = runConv;
-document.getElementById("ccopy").onclick = e => copyText(e.target, "input\ttype\tcurrent_id\trelation\n" + convRows.map(r => r.join("\t")).join("\n"));
+document.getElementById("ccopy").onclick = e => copyText(e.target, "input\ttype\tcurrent_id\trelation\tncbi_description\tatlas\n" + convRows.map(r => r.slice(0, 6).join("\t")).join("\n"));
 { const ks = Object.keys(D.ens).slice(0, 3), ps = Object.keys(D.prev).slice(0, 4).map(x => "LOC" + x); document.getElementById("cq").value = ks.concat(ps).join("\n"); runConv(); }
 
 // ---------------- cite
@@ -506,7 +516,7 @@ document.getElementById("v-cite").innerHTML = `<div style="display:grid;gap:10px
     <tr><td>Hemocytes</td><td>de La Forest Divonne et al. 2025, eLife</td><td class="mono">PRJEB74031</td></tr><tr><td>Hemocyte priming</td><td>no paper (Dalian Ocean University)</td><td class="mono">PRJNA1236035</td></tr>
     <tr><td>Gonad</td><td>Wang et al. 2024, iScience; Wang et al. 2025, Communications Biology</td><td class="mono">PRJNA983861, PRJNA1244049, PRJNA1347576</td></tr>
     <tr><td>Ganglia</td><td>Yang et al. 2026, BMC Biology</td><td class="mono">PRJNA1457765</td></tr><tr><td>Mantle</td><td>Bai et al. 2026, bioRxiv</td><td class="mono">PRJNA1338802</td></tr></tbody></table></div></div>
-  <div class="panel two"><div style="display:grid;gap:8px;align-content:start"><h2>How the one-line verdict is made</h2><p class="note">We borrow the Human Protein Atlas single-cell categories and thresholds: enriched (at least 4 times any other cell type), group enriched (2 to 5 cell types at least 4 times the rest), enhanced (at least 4 times the average), not detected (below 1). Here they are applied to cell-type means in CP10k across all 209 cell types, so tissue and study differences also contribute.</p></div>
+  <div class="panel two"><div style="display:grid;gap:8px;align-content:start"><h2>How the one-line verdict is made</h2><p class="note">We borrow the Human Protein Atlas single-cell categories and thresholds: enriched (at least 4 times any other cell type), group enriched (2 to 5 cell types at least 4 times the rest), enhanced (at least 4 times the average), not detected (below 1). Here they are applied to cell-type means in CP10k across all 211 cell types, so tissue and study differences also contribute.</p></div>
     <div style="display:grid;gap:8px;align-content:start"><h2>How to cite</h2><p class="note">Manuscript in preparation. Until then, cite this page with its version and the source studies above.</p></div></div>`;
 
 // ---------------- router

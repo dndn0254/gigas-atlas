@@ -1,6 +1,6 @@
 # Gigas Cell Atlas
 
-A uniformly reprocessed single-cell atlas of the Pacific oyster (*Crassostrea gigas*): 186,414 cells from 8 public
+A uniformly reprocessed single-cell atlas of the Pacific oyster (*Crassostrea gigas*): 203,071 cells from 8 public
 single-cell and single-nucleus RNA-seq studies (embryo, larva, blood, gonad, ganglia, mantle), rebuilt from raw reads on the current
 genome (xbMagGiga1.1 (GCF_963853765.1), RefSeq RS_2024_06), analysed with Seurat and named the same way.
 
@@ -10,7 +10,7 @@ genome (xbMagGiga1.1 (GCF_963853765.1), RefSeq RS_2024_06), analysed with Seurat
 |---|---|
 | `index.html` | project page |
 | `explorer/` | look up a gene or a cell type, test a gene list, convert old Roslin v1 gene IDs |
-| `families.html` | the same cell type found again in other datasets (22 families, 90 robust matches) |
+| `families.html` | the same cell type found again in other datasets (23 families, 82 robust matches) |
 | `annotations/` | cell-level and cell-type-level tables, marker database ([details](annotations/README.md)) |
 
 The website is static HTML and JavaScript; it runs entirely in the browser and sends nothing anywhere.
@@ -19,14 +19,17 @@ Name the cells of new oyster data with these references, in R on a Seurat object
 
 ## How it was made
 
-1. Public raw reads (27 SRA runs, 20 libraries) aligned to xbMagGiga1.1 (GCF_963853765.1, RefSeq annotation RS_2024_06) with
-   STARsolo 2.7.11b, Cell Ranger-matched settings, EmptyDrops_CR cell calling.
+1. Public raw reads (27 SRA runs, 20 libraries) counted with Cell Ranger 7.0.1 on xbMagGiga1.1 (GCF_963853765.1, RefSeq annotation
+   RS_2024_06; 33,068 genes with exon models), --chemistry auto, exons only for embryo and larva cells, exons and introns for nuclei and
+   adult tissue cells, default cell calling. The one non-10x library (mantle, BMKMANU DG1000) was counted with Cell Ranger after each of
+   its barcodes was given its own 10x barcode (one-to-one), then renamed back. A second, complete count with STARsolo 2.7.11b
+   (Cell Ranger-matched settings) was kept for comparison.
 2. Cell QC per library (median minus 3 MAD of log UMI and log genes); doublets removed when 2 of 3 tools agree (Scrublet, scDblFinder, SOLO).
 3. Seurat 5.5.1 (R 4.5.3) per atlas: NormalizeData (LogNormalize), FindVariableFeatures (vst, 3,000), ScaleData, RunPCA (50),
    IntegrateLayers with RPCA for the gonad and ganglia atlases (several libraries of one tissue), FindNeighbors (k 20), FindClusters (Louvain), RunUMAP.
 4. Cell-type names graded by evidence (authors' markers, literature markers, cluster genes, hemocyte programs, QC flags).
 5. Cross-dataset matching with MetaNeighbor 1.29.0 (MetaNeighborUS) on Seurat-normalised data: reciprocal top hits, AUROC at least 0.9,
-   one-vs-best AUROC at least 0.6, stable in at least 6 of 9 re-runs: 90 pairs, 22 families.
+   one-vs-best AUROC at least 0.6, stable in at least 6 of 9 re-runs: 82 pairs, 23 families.
 
 ## Source studies
 
@@ -36,7 +39,7 @@ Bai et al. 2026, preprint (PRJNA1338802). Please cite them when you use their ce
 
 ## Status and citation
 
-Preview release (v5 2026-11-12 (atlas v4 cells, Seurat 5.5.1 maps, MetaNeighbor R families)). The manuscript is in preparation; numbers and names may change before publication.
+Preview release (v7 2026-11-17 (Cell Ranger 7.0.1 counts, Seurat 5.5.1 maps, MetaNeighbor R families)). The manuscript is in preparation; numbers and names may change before publication.
 Until then, cite this repository.
 
 ## Licence

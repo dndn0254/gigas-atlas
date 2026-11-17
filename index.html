@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Gigas Cell Atlas: 186,414 Pacific oyster cells from 8 public single-cell studies, reprocessed on one genome (xbMagGiga1.1).">
+<meta name="description" content="Gigas Cell Atlas: 203,071 Pacific oyster cells from 8 public single-cell studies, reprocessed on one genome (xbMagGiga1.1) with Cell Ranger.">
 <meta property="og:title" content="Gigas Cell Atlas">
-<meta property="og:description" content="Gigas Cell Atlas: 186,414 Pacific oyster cells from 8 public single-cell studies, reprocessed on one genome (xbMagGiga1.1).">
+<meta property="og:description" content="Gigas Cell Atlas: 203,071 Pacific oyster cells from 8 public single-cell studies, reprocessed on one genome (xbMagGiga1.1) with Cell Ranger.">
 <meta name="theme-color" content="#040606">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Gigas Cell Atlas</title>
@@ -207,7 +207,7 @@ section{display:grid;gap:26px;padding-block:56px 0;scroll-margin-top:70px}
       <a class="ecard" href="families.html"><span class="arrow">&rarr;</span><i>Family browser</i><b>The same cell type, across datasets</b>
         <p id="fp"></p><div class="fdots" id="fdots" aria-hidden="true"></div></a>
       <a class="ecard" href="explorer/#list"><span class="arrow">&rarr;</span><i>Gene list and ID converter</i><b>Read your bulk RNA-seq</b>
-        <p>Paste differentially expressed genes and see which atlas cell types they point to. Old Roslin v1 IDs convert to current IDs on the next tab.</p></a>
+        <p>Paste differentially expressed genes and see which atlas cell types they point to. Old Roslin v1 IDs convert to current IDs on the next tab, with each gene's description and where it is expressed in the atlas.</p></a>
     </div>
   </section>
 
@@ -261,9 +261,9 @@ gigasatlas enrich my_de_genes.txt</pre></div>
     <div class="shead"><div><div class="eyebrow">Data</div><h2>Files</h2></div>
       <p class="note">Annotation tables are in the <a href="https://github.com/dndn0254/gigas-atlas/tree/main/annotations">annotations folder</a> of this site's repository now. Count matrices go to Zenodo with a DOI when the paper is published.</p></div>
     <div class="files">
-      <div class="file"><b><a href="annotations/cells.tsv.gz">Cell annotation (.tsv.gz)</a></b><span>every one of the 186,414 cells: atlas, library, cell-type name, lineage, confidence, Seurat cluster and map position</span><span class="pill ok">available</span></div>
+      <div class="file"><b><a href="annotations/cells.tsv.gz">Cell annotation (.tsv.gz)</a></b><span>every one of the 203,071 cells: atlas, library, cell-type name, lineage, confidence, Seurat cluster and map position</span><span class="pill ok">available</span></div>
       <div class="file"><b><a href="annotations/cell_types.tsv">Cell types (.tsv)</a></b><span>name, authors' name, lineage, confidence, cell count, family of every cell type</span><span class="pill ok">available</span></div>
-      <div class="file"><b><a href="annotations/family_matches.tsv">Families and matches (.tsv)</a></b><span>90 robust cross-dataset matches with AUROC (MetaNeighbor R), and 22 families</span><span class="pill ok">available</span></div>
+      <div class="file"><b><a href="annotations/family_matches.tsv">Families and matches (.tsv)</a></b><span>82 robust cross-dataset matches with AUROC (MetaNeighbor R), and 22 families</span><span class="pill ok">available</span></div>
       <div class="file"><b><a href="annotations/marker_db_v1.xlsx">Marker database (.xlsx)</a></b><span>published markers translated to current IDs; top genes of every cell type</span><span class="pill ok">available</span></div>
       <div class="file"><b>ID crosswalk (.tsv)</b><span>Roslin v1 to xbMagGiga1.1, 18,731 one-to-one genes; ships inside gigasatlas</span><span class="pill ok">in package</span></div>
       <div class="file"><b>Six atlas files (Seurat .rds, .h5ad)</b><span>raw counts, cell names, confidence, map coordinates</span><span class="pill warn">at publication</span></div>
